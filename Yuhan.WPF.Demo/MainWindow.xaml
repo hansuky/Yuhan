@@ -1,0 +1,83 @@
+﻿<Window x:Class="Yuhan.WPF.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:menu="clr-namespace:Yuhan.WPF.MenuListBox;assembly=Yuhan.WPF.MenuListBox"
+        xmlns:vc="clr-namespace:Yuhan.WPF.VisualContainer;assembly=Yuhan.WPF.VisualContainer"
+        xmlns:viewModel="clr-namespace:Yuhan.WPF.Demo.ViewModels"
+        Title="MainWindow" Height="550" Width="725">
+    <Window.Resources>
+        <viewModel:MainViewModel x:Key="ViewModel" />
+    </Window.Resources>
+    <Grid Margin="5" DataContext="{Binding Source={StaticResource ViewModel}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35px"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40px"/>
+            <ColumnDefinition Width="624*"/>
+            <ColumnDefinition Width="43*"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.RowSpan="2" Grid.ColumnSpan="3" BorderBrush="Black" Padding="5" BorderThickness="1" CornerRadius="2">
+
+        <vc:VisualContainer x:Name="VisualContainer"
+                            ColumnCount="10" 
+                            RowCount="10" 
+                            ItemsSource="{Binding Path=Containers}" 
+                            ShowGridLines="True" />
+        </Border>
+        <menu:MenuListBox Grid.ColumnSpan="1" Grid.RowSpan="1" Orientation="Vertical" VerticalAlignment="Top" x:Name="ShapeMenuList">
+            <menu:MenuListBoxItem Click="GridContentBtn_Click">
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Grid.png"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Grid" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+            <menu:MenuListBoxItem >
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Rect.png"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Rect" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+            <menu:MenuListBoxItem >
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Cir.png"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Circle" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+            <menu:MenuListBoxItem >
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Obj.png"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Object" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+            <menu:MenuListBoxItem >
+                <DockPanel>
+                    <TextBlock HorizontalAlignment="Center" Text="Del" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+            <menu:MenuListBoxItem Click="ClearContent_Click">
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Clear.png"/>
+                    <TextBlock HorizontalAlignment="Center" Text="Clear" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+        </menu:MenuListBox>
+        <menu:MenuListBox Grid.Column="2" Grid.ColumnSpan="1" Orientation="Vertical" VerticalAlignment="Top" >
+            <menu:MenuListBoxItem Content="Setting" Click="SettingBtn_Click"/>
+            <menu:MenuListBoxItem Content="Hide" Click="HideBtn_Click"/>
+        </menu:MenuListBox>
+        <menu:MenuListBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="1" Orientation="Horizontal" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+            <menu:MenuListBoxItem Width="100" Padding="5">
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Plus.png"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+            <menu:MenuListBoxItem Width="100" Padding="5">
+                <DockPanel>
+                    <Image DockPanel.Dock="Top" Source="ICons/Minus.png"/>
+                </DockPanel>
+            </menu:MenuListBoxItem>
+        </menu:MenuListBox>
+    </Grid>
+</Window>

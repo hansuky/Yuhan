@@ -1,0 +1,241 @@
+﻿<dragDrop:DragDropWindow x:Class="Yuhan.WPF.DragDrop.Demo2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dragDrop="clr-namespace:Yuhan.WPF.DragDrop.DragDropFramework;assembly=Yuhan.WPF.DragDrop"
+        Title="Drag-and-Drop Smorgasbord" Height="600" Width="600">
+    <Window.Resources>
+        <Image x:Key="CalculatorImage" Height="16" Source="Images\Calculator.png" />
+        <Image x:Key="MicrophoneImage" Height="16" Source="Images\Microphone.png" />
+        <Image x:Key="OrganizerImage" Height="16" Source="Images\Organizer.png" />
+        <Image x:Key="ReportImage" Height="16" Source="Images\Report.png" />
+        <Image x:Key="ReportStackImage" Height="16" Source="Images\ReportStack.png" />
+    </Window.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- TabControls for DragDrop testing -->
+        <StackPanel Name="stackPanel0" Orientation="Horizontal">
+            <TabControl x:Name="docTabControl0">
+                <TabItem Header="Document 1">
+                    <TextBlock>
+                        Drag tab within a TabControl to reorder.
+                        <LineBreak />
+                        <LineBreak />
+                        Drag tab to different TabControl to move.
+                        <LineBreak />
+                        <LineBreak />
+                            <Run Foreground="#c00000">
+                            Check out the other tabs for more instructions.
+                            </Run>
+                        <LineBreak />
+                        <LineBreak />
+                        Try using the Shift key while dragging to the TreeView.
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Document 2">
+                    <TextBlock>
+                        Drag-and-drop tree nodes and list items.
+                        <LineBreak />
+                        <LineBreak />
+                        Note that you can only drag tree leaves to
+                        <LineBreak />
+                        the list box.
+                        <LineBreak />
+                        <LineBreak />
+                        An item dropped in empty space is added to the
+                        <LineBreak />
+                        end of the list (or tree).
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Document 3">
+                    <TextBlock>
+                        Drag-and-drop the items on the canvas areas
+                        <LineBreak />
+                        within the the canvas or to the other canvas.
+                        <LineBreak />
+                        <LineBreak />
+                        Drag-and-drop buttons between the tool bar
+                        <LineBreak />
+                        and the canvas areas.
+                    </TextBlock>
+                </TabItem>
+            </TabControl>
+            <Border Width="20" />
+            <TabControl x:Name="docTabControl1">
+                <TabItem Header="Doc 1">
+                    <TextBlock>
+                        Drag a file or files from Windows Explorer to
+                        <LineBreak />
+                        create new tabs, tree nodes or list items.
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Doc 2">
+                    <TextBlock>
+                        Drag items from the canvas to the Rich Text Box
+                        <LineBreak />
+                        to insert text.
+                        <LineBreak />
+                        <LineBreak />
+                        Drag selected text from the Rich Text Box to a
+                        <LineBreak />
+                        canvas to create a TextBlock.
+                    </TextBlock>
+                </TabItem>
+                <TabItem Header="Doc 3">
+                    <TextBlock>
+                        Drag items to the <Run Foreground="#c00000">trash</Run> area to delete them.
+                    </TextBlock>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+
+        <!-- TreeView for DragDrop testing -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TreeView Name="treeView0" Grid.Column="0" Width="125">
+                <TreeViewItem Header="Tree Node 1">
+                    <TreeViewItem Header="Child 1" />
+                </TreeViewItem>
+                <TreeViewItem Header="Tree Node 2">
+                    <TreeViewItem Header="Child 2" />
+                    <TreeViewItem Header="Child 3" />
+                </TreeViewItem>
+                <TreeViewItem Header="Tree Node 3">
+                    <TreeViewItem Header="Child 4" />
+                    <TreeViewItem Header="Child 5" />
+                    <TreeViewItem Header="Child 6" />
+                </TreeViewItem>
+            </TreeView>
+            <TreeView Name="treeView1" Grid.Column="2" Width="125">
+                <TreeViewItem Header="Node 1">
+                    <TreeViewItem Header="Kid 1" />
+                </TreeViewItem>
+                <TreeViewItem Header="Node 2">
+                    <TreeViewItem Header="Kid 2" />
+                    <TreeViewItem Header="Kid 3" />
+                </TreeViewItem>
+                <TreeViewItem Header="Node 3">
+                    <TreeViewItem Header="Kid 4" />
+                    <TreeViewItem Header="Kid 5" />
+                    <TreeViewItem Header="Kid 6" />
+                </TreeViewItem>
+            </TreeView>
+            <RichTextBox Grid.Column="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <FlowDocument>
+                    <Paragraph>Rich Text Box</Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
+
+        <!-- ListBox for DragDrop testing -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ListBox Name="listBox0" Grid.Column="0" Width="125">
+                <ListBoxItem Content="List Item 1" />
+                <ListBoxItem Content="List Item 2" />
+                <ListBoxItem Content="List Item 3" />
+                <ListBoxItem Content="List Item 4" />
+                <ListBoxItem Content="List Item 5" />
+                <ListBoxItem Content="List Item 6" />
+                <ListBoxItem Content="List Item 7" />
+                <ListBoxItem Content="List Item 8" />
+                <ListBoxItem Content="List Item 9" />
+                <ListBoxItem Content="List Item 10" />
+                <ListBoxItem Content="List Item 11" />
+                <ListBoxItem Content="List Item 12" />
+                <ListBoxItem Content="List Item 13" />
+                <ListBoxItem Content="List Item 14" />
+                <ListBoxItem Content="List Item 15" />
+            </ListBox>
+            <ListBox Name="listBox1" Grid.Column="2" Width="125">
+                <ListBoxItem Content="Item 1" />
+                <ListBoxItem Content="Item 2" />
+                <ListBoxItem Content="Item 3" />
+                <ListBoxItem Content="Item 4" />
+                <ListBoxItem Content="Item 5" />
+                <ListBoxItem Content="Item 6" />
+                <!--<ListBoxItem Content="Item 7" />
+                <ListBoxItem Content="Item 8" />
+                <ListBoxItem Content="Item 9" />
+                <ListBoxItem Content="Item 10" />
+                <ListBoxItem Content="Item 11" />
+                <ListBoxItem Content="Item 12" />
+                <ListBoxItem Content="Item 13" />
+                <ListBoxItem Content="Item 14" />
+                <ListBoxItem Content="Item 15" />-->
+            </ListBox>
+            <Border Grid.Column="4" BorderThickness="1" BorderBrush="Blue">
+                <!-- Canvas Background must be set to something so Drag*Events are called -->
+                <Canvas Name="canvas0" ClipToBounds="True" Background="Transparent">
+                    <TextBlock Canvas.Left="10" Canvas.Top="5">
+                        A TextBlock on a canvas
+                    </TextBlock>
+                    <Rectangle Canvas.Left="50" Canvas.Top="30" Width="50" Height="50" Fill="Olive" />
+                    <Button ToolTip="Microphone" Canvas.Left="50" Canvas.Top="90" Content="{StaticResource MicrophoneImage}" />
+                    <Button ToolTip="Organizer" Canvas.Left="20" Canvas.Top="90" Content="{StaticResource OrganizerImage}" />
+                </Canvas>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="6">
+            <Border Height="0" />
+            <ToolBarTray>
+                <ToolBar Name="toolBar0">
+                    <Button ToolTip="Calculator" Content="{StaticResource CalculatorImage}" />
+                </ToolBar>
+                <ToolBar Name="toolBar1">
+                    <Button ToolTip="Okay" Content="OK" />
+                </ToolBar>
+            </ToolBarTray>
+        </StackPanel>
+
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Width="255" BorderBrush="Red" BorderThickness="1" Background="#FFF4F4">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">TRASH!</TextBlock>
+                    <ListBox Name="trash" BorderThickness="0" Background="Transparent" />
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" BorderThickness="1" BorderBrush="Blue">
+                <!-- Canvas Background must be set to something so Drag*Events are called -->
+                <Canvas Name="canvas1" ClipToBounds="True" Background="Transparent">
+                    <TextBlock Canvas.Left="10" Canvas.Top="5">
+                        Another TextBlock on a canvas
+                    </TextBlock>
+                    <Rectangle Canvas.Left="50" Canvas.Top="30" Width="50" Height="50" Fill="PowderBlue" />
+                    <Button ToolTip="Report" Canvas.Left="50" Canvas.Top="90" Content="{StaticResource ReportImage}" />
+                    <Button ToolTip="Report Stack" Canvas.Left="20" Canvas.Top="90" Content="{StaticResource ReportStackImage}" />
+                    <Button ToolTip="Cancel" Canvas.Left="80" Canvas.Top="92" Content="Cancel" />
+                </Canvas>
+            </Border>
+        </Grid>
+
+    </Grid>
+</dragDrop:DragDropWindow>

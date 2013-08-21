@@ -5,6 +5,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.Common", "Yuhan.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF", "Yuhan.WPF\Yuhan.WPF.csproj", "{BA51331E-E146-42AB-A32F-78674F869512}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.Demo", "Yuhan.WPF.Demo\Yuhan.WPF.Demo.csproj", "{7072A8C0-B951-4996-8CC1-6886DCE60016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.DragDrop", "Yuhan.WPF.DragDrop\Yuhan.WPF.DragDrop.csproj", "{A4F6A0D6-0D9D-402E-80F6-6929F9AA53CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.DragDrop.Demo", "Yuhan.WPF.DragDrop.Demo\Yuhan.WPF.DragDrop.Demo.csproj", "{793C090B-03BE-4654-B3A0-C297151541B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.DragDrop.Demo2", "Yuhan.WPF.DragDrop.Demo2\Yuhan.WPF.DragDrop.Demo2.csproj", "{55A396E5-76F4-4878-B6E2-7A7F226218E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.MenuListBox", "Yuhan.WPF.MenuListBox\Yuhan.WPF.MenuListBox.csproj", "{8972A52C-B69B-4F2B-AE96-BF77CF08AFBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.VisualContainer", "Yuhan.WPF.VisualContainer\Yuhan.WPF.VisualContainer.csproj", "{82D32530-19F1-4B9E-9722-22FBFA41D73E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +31,30 @@ Global
 		{BA51331E-E146-42AB-A32F-78674F869512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA51331E-E146-42AB-A32F-78674F869512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA51331E-E146-42AB-A32F-78674F869512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7072A8C0-B951-4996-8CC1-6886DCE60016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7072A8C0-B951-4996-8CC1-6886DCE60016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7072A8C0-B951-4996-8CC1-6886DCE60016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7072A8C0-B951-4996-8CC1-6886DCE60016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F6A0D6-0D9D-402E-80F6-6929F9AA53CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F6A0D6-0D9D-402E-80F6-6929F9AA53CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F6A0D6-0D9D-402E-80F6-6929F9AA53CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F6A0D6-0D9D-402E-80F6-6929F9AA53CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793C090B-03BE-4654-B3A0-C297151541B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793C090B-03BE-4654-B3A0-C297151541B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793C090B-03BE-4654-B3A0-C297151541B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793C090B-03BE-4654-B3A0-C297151541B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A396E5-76F4-4878-B6E2-7A7F226218E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A396E5-76F4-4878-B6E2-7A7F226218E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A396E5-76F4-4878-B6E2-7A7F226218E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A396E5-76F4-4878-B6E2-7A7F226218E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8972A52C-B69B-4F2B-AE96-BF77CF08AFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8972A52C-B69B-4F2B-AE96-BF77CF08AFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8972A52C-B69B-4F2B-AE96-BF77CF08AFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8972A52C-B69B-4F2B-AE96-BF77CF08AFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82D32530-19F1-4B9E-9722-22FBFA41D73E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82D32530-19F1-4B9E-9722-22FBFA41D73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82D32530-19F1-4B9E-9722-22FBFA41D73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82D32530-19F1-4B9E-9722-22FBFA41D73E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
