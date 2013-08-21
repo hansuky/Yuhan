@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows;
 
-namespace NETKey
+namespace Yuhan.WPF.Helpers
 {
     /// <summary>
     /// Provides a means to specify DataTemplates to be selected from within WPF code

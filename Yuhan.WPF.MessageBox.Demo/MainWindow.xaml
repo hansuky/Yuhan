@@ -1,0 +1,23 @@
+﻿<Window x:Class="Yuhan.WPF.MessageBox.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Width="525" SizeToContent="Height">
+    <StackPanel Orientation="Vertical">
+        <GroupBox Header="MessageBox">
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="DefaultMsgBoxBtn" HorizontalAlignment="Stretch"
+                        Content="기본 메세지" Margin="0,5" Height="35" Click="DefaultMsgBoxBtn_Click"/>
+                <Button x:Name="CaptionMsgBoxBtn" HorizontalAlignment="Stretch"
+                        Content="캡션을 포함한 메세지" Margin="0,5" Height="35" Click="CaptionMsgBoxBtn_Click"/>
+                <Button x:Name="YesNoMsgBoxBtn" HorizontalAlignment="Stretch"
+                        Content="버튼 지원" Margin="0,5" Height="35" Click="YesNoMsgBoxBtn_Click"/>
+                <Button x:Name="IConMsgBoxBtn" HorizontalAlignment="Stretch"
+                        Content="아이콘 지원" Margin="0,5" Height="35" Click="IConMsgBoxBtn_Click"/>
+                <Button x:Name="FullMsgBoxBtn" HorizontalAlignment="Stretch"
+                        Content="종합" Margin="0,5" Height="35" Click="FullMsgBoxBtn_Click"/>
+                <Button x:Name="ProgressMsgBoxBtn" HorizontalAlignment="Stretch"
+                        Content="프로그레싱" Margin="0,5" Height="35" Click="ProgressMsgBoxBtn_Click"/>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</Window>

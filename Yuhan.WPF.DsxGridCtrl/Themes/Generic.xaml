@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:DsxGridCtrl">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxDataGrid.xaml" />
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxCellComboBox.xaml" />
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxCellDatePicker.xaml" />
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxCellProgressBar.xaml" />
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxCellSlider.xaml" />
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxFilterPopup.xaml" />
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/DsxFilterClear.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

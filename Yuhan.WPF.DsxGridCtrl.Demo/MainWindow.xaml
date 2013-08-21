@@ -1,0 +1,229 @@
+﻿<Window x:Class="Yuhan.WPF.DsxGridCtrl.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:dsx="clr-namespace:Yuhan.WPF.DsxGridCtrl;assembly=Yuhan.WPF.DsxGridCtrl"
+        xmlns:local="clr-namespace:Yuhan.WPF.DsxGridCtrl.Demo"
+        
+        UseLayoutRounding="True"
+		
+		Background="LightGray"
+        Title="MainWindow" 
+        
+        Height="587" Width="800">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <BitmapImage x:Key="imgForward" UriSource="\Resources\fwd_16.png"/>
+
+            <!-- cells -->
+            <Style x:Key="dsxRowCellBold" TargetType="dsx:DsxRowCellStyle">
+                <Setter Property="CellFontWeight" Value="Bold"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- ============================================================================================================================= -->
+
+        <StackPanel Grid.Row="0" 
+					Margin="5"
+					Orientation="Horizontal" 
+					VerticalAlignment="Center">
+            
+            <Button       Margin="2,0,2,0" Click="OnLoadData"   Content="load data"  />
+            <Button       Margin="2,0,8,0" Click="OnClearData"  Content="clear data" />
+            
+            <ToggleButton Margin="8,0,2,0" IsChecked="False" Click="OnToggleVLines"      Content="VLines"    />
+            <ToggleButton Margin="2,0,2,0" IsChecked="True"  Click="OnToggleHLines"      Content="HLines"    />
+            
+            <ToggleButton Margin="2,0,2,0" IsChecked="True"  Click="OnToggleHeader"      Content="Header"    />
+            <ToggleButton Margin="2,0,2,0" IsChecked="True"  Click="OnToggleFilter"      Content="Filter"    />
+            <ToggleButton Margin="2,0,2,0" IsChecked="True"  Click="OnToggleFooter"      Content="Footer"    />
+            <ToggleButton Margin="2,0,2,0" IsChecked="True"  Click="OnToggleCellAdorner" Content="Cells"     />
+            <ToggleButton Margin="2,0,2,0" IsChecked="True"  Click="OnToggleCellEditing" Content="Editing"   />
+
+            <RadioButton  Margin="8,0,2,0" Height="16" GroupName="Theme" IsChecked="True"    Click="OnSetTheme"  Content="Gray"   />
+            <RadioButton  Margin="2,0,2,0" Height="16" GroupName="Theme" IsChecked="False"   Click="OnSetTheme"  Content="Blue"   />
+            <RadioButton  Margin="2,0,2,0" Height="16" GroupName="Theme" IsChecked="False"   Click="OnSetTheme"  Content="Orange" />
+            <RadioButton  Margin="2,0,8,0" Height="16" GroupName="Theme" IsChecked="False"   Click="OnSetTheme"  Content="Green"  />
+
+        </StackPanel>
+        
+        <!-- ============================================================================================================================= -->
+        <dsx:DsxDataGrid x:Name="dataGrid1"
+                         Grid.Row="1" 
+                         Margin="5"
+						 
+                         AllowCheckAnyTime="True"
+                         
+                         SortField="CompanyName"
+                         
+                         HorizontalGridLinesIsVisible="True"
+                         VerticalGridLinesIsVisible="False"
+                         
+                         CellAdornerIsVisible="True"
+                         CellEditingIsEnabled="True"
+
+                         HeaderVisibility="Visible"
+                         FilterVisibility="Auto"
+                         FooterVisibility="Auto"
+
+                         ItemMinHeight="0"
+                         ItemMaxHeight="0"
+                         ItemFixHeight="20"
+                         
+                         AreaLeftWidth="212"
+                         AreaRightWidth="250" 
+                         
+                         SplitterLeftWidth="3"
+                         SplitterLeftIsSizing="False"
+                         SplitterRightWidth="3"
+                         SplitterRightIsSizing="False"
+                         
+                         IsVirtualizing="False">
+
+            <dsx:DsxDataGrid.Columns>
+                <dsx:DsxColumn  FieldName="MarkFlag" ColumnArea="Left" 
+                                Header="" Width="25" IsSizable="False" IsSortable="False"
+                                ViewType="CheckBox" FilterType="CheckBox" FooterType="None" EditType="None"
+                                CellHAlign="Center"/>
+
+                <dsx:DsxColumn  FieldName="CustomerID" ColumnArea="Left" 
+                                Header="ID" Width="65" IsSizable="False"
+                                ViewType="Text" FilterType="TextBox" FooterType="None" EditType="None"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="CompanyName" ColumnArea="Left" 
+                                Header="Company" Width="120" IsSizable="False"
+                                ViewType="Text" FilterType="TextBox" FooterType="Count" EditType="TextBox"
+                                CellHAlign="Left"
+                                CellForeground="Blue"
+                                CellBackground="#33C7C7C7"/>
+                
+                <dsx:DsxColumn  FieldName="ContactName" ColumnArea="Center" 
+                                Header="Contact" Width="120" 
+                                ViewType="Text" FilterType="TextBox" FooterType="None" EditType="TextBox"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="ContactTitle" ColumnArea="Center" 
+                                Header="Title" Width="120"     
+                                ViewType="Text" FilterType="ComboBox" FooterType="None" EditType="ComboBox"
+                                CellHAlign="Left" CellContentItemsSource="{x:Static local:ContactTitles.ComboSource}"/>
+                
+                <dsx:DsxColumn 	FieldName="Address" ColumnArea="Center" 
+								Header="Address" 
+								Width="120" 
+                                EditType="CellTemplate" FilterType="TextBox">
+                    <dsx:DsxColumn.CellTemplate>
+                        <DataTemplate>
+                            <dsx:DsxCellBase x:Name="cellPanel">
+                                <Border x:Name="cellBorder"
+                                        BorderThickness="2"
+                                        BorderBrush="Transparent"
+                                        CornerRadius="2" >
+                                    <DockPanel>
+                                        <TextBlock  x:Name="cellCustomView"
+                                                    Padding="6,0" 
+                                                    VerticalAlignment="Stretch"
+                                                    HorizontalAlignment="Stretch"
+                                                    Text="{Binding Path=Address, Mode=OneWay}">
+                                        </TextBlock>
+                                        <!-- edit part -->
+                                        <TextBox  x:Name="cellCustomEdit"
+                                                  Visibility="Collapsed"
+                                                  Padding="2,-2" 
+                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="Stretch"
+                                                  Text="{Binding Path=Address, Mode=TwoWay}">
+                                        </TextBox>
+                                    </DockPanel>
+                                </Border>
+                            </dsx:DsxCellBase>
+                            <DataTemplate.Triggers>
+                                <Trigger SourceName="cellPanel" Property="IsEditMode" Value="True">
+                                    <Setter Property="Visibility"  TargetName="cellCustomView"  Value="Collapsed"/>
+                                    <Setter Property="Visibility"  TargetName="cellCustomEdit"  Value="Visible"/>
+                                    <Setter Property="BorderBrush" TargetName="cellBorder"      Value="Red"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+
+                        </DataTemplate>
+                    </dsx:DsxColumn.CellTemplate>
+                </dsx:DsxColumn>                
+                
+                <dsx:DsxColumn  FieldName="City" ColumnArea="Center" 
+                                Header="City" Width="90"     
+                                ViewType="Text" FilterType="TextBox" FooterType="None" EditType="TextBox"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="PostalCode" ColumnArea="Center" 
+                                Header="Zip" Width="50"     
+                                ViewType="Text" FilterType="TextBox" FooterType="None" EditType="TextBox"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="Country" ColumnArea="Center" 
+                                Header="Country" Width="90"     
+                                ViewType="Text" FilterType="TextBox" FilterCriteria="StartsWith" FooterType="None" EditType="TextBox"
+								RowCellStyle="{StaticResource dsxRowCellBold}"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="Phone" ColumnArea="Right" 
+                                Header="Phone" Width="90" IsSizable="False"    
+                                ViewType="Text" FilterType="TextBox" FooterType="None" EditType="TextBox"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="Fax" ColumnArea="Center" 
+                                Header="Fax" Width="90"     
+                                ViewType="Text" FilterType="TextBox" FooterType="None" EditType="TextBox"
+                                CellHAlign="Left"/>
+                
+                <dsx:DsxColumn  FieldName="DateRegistered" ColumnArea="Center" 
+                                Header="Since" Width="120"    
+                                ViewType="Date" FilterType="DatePicker" FilterCriteria="Smaller" FooterType="None" EditType="DatePicker"
+                                CellHAlign="Left"/>
+
+                <dsx:DsxColumn  FieldName="Coverage" ColumnArea="Center" 
+                                Header="Coverage" Width="90"
+                                ViewType="Progress" FilterType="TextBox" FilterCriteria="GreaterOrEqual" EditType="Slider"
+                                StringFormat="{} is: {0} %" 
+                                HeaderStyle="{StaticResource dsxHeaderStyleBlue}"
+                                FilterStyle="{StaticResource dsxFilterStyleBlue}"
+                                FooterStyle="{StaticResource dsxFooterStyleBlue}"
+                                CellHAlign="Right"
+                                CellBackground="#FFDAEDFD"
+                                CellForeground="Black"
+                                CellContentBackground="#FFC06060"/>
+
+                <dsx:DsxColumn  FieldName="Avatar" ColumnArea="Right" 
+                                Header="" Width="20" IsSizable="False"
+                                ViewType="Image" FilterType="None" FooterType="None" EditType="None"
+                                CellHAlign="Center"/>
+                
+                <dsx:DsxColumn  FieldName="IsVip" ColumnArea="Right" 
+                                Header="Vip" Width="23" IsSizable="False"
+                                ViewType="Boolean" FilterType="CheckBox" FooterType="None" EditType="None"
+                                CellHAlign="Center"/>
+                
+                <dsx:DsxColumn  FieldName="Sales" ColumnArea="Right" 
+                                Header="Sales" Width="95"
+                                ViewType="Decimal" FilterType="TextBox" FilterCriteria="GreaterOrEqual" FooterType="Max" EditType="TextBox"
+                                CellHAlign="Right"
+                                CellBackground="#33C7C7C7"/>
+                
+
+            </dsx:DsxDataGrid.Columns>
+        </dsx:DsxDataGrid>
+        <!-- ============================================================================================================================= -->
+    </Grid>
+</Window>

@@ -1,0 +1,176 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:local="clr-namespace:Yuhan.WPF.DsxGridCtrl">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Yuhan.WPF.DsxGridCtrl;component/Themes/ListView.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type local:DsxDataGrid}">
+
+        <Setter Property="Background"       Value="#FFF8F8F8" />
+        <Setter Property="BorderBrush"      Value="DarkGray" />
+        <Setter Property="BorderThickness"  Value="2" />
+        <Setter Property="IsTabStop"        Value="True" />
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:DsxDataGrid}">
+
+                    <Grid Margin="2">
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding Path=AreaLeftWidth,       Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <ColumnDefinition Width="{Binding Path=SplitterLeftWidth,   Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <ColumnDefinition Width="{Binding Path=AreaCenterWidth,     Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <ColumnDefinition Width="{Binding Path=SplitterRightWidth,  Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <ColumnDefinition Width="{Binding Path=AreaRightWidth,      Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" 
+                                Grid.ColumnSpan="5"
+                                Margin="0"
+                                CornerRadius="2"
+                                Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="0">
+                        </Border>
+
+                        <DockPanel  Grid.Column="0">
+                            <ListView x:Name="PART_ListViewLeft"
+                                      FocusVisualStyle="{x:Null}"
+                                      BorderThickness="0"
+                                      Padding="0"
+                                      SelectionMode="Single"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      ItemContainerStyle="{StaticResource dsxRowItem}"
+                                      Style="{StaticResource DsxDataGrid}"
+                                      
+                                      VirtualizingStackPanel.IsVirtualizing="{Binding Path=IsVirtualizing, Mode=OneTime, RelativeSource={RelativeSource TemplatedParent}}"
+                                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                                      
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.IsDeferredScrollingEnabled="False"
+                                      ScrollViewer.HorizontalScrollBarVisibility="{Binding Path=HorizontalScrollbarVisibility, Mode=OneTime, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                                <!-- beware: as soon the CanContentScroll is false or a GroupStyle is set, virtualizing is turned of-->
+                               
+                                <ListView.View>
+                                    <local:DsxGridView  x:Name="PART_GridViewLeft"
+                                                        ParentDataGrid="{Binding Path=., 
+                                                                                 Mode=OneTime,
+                                                                                 RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DsxDataGrid}}}"
+                                                        AllowsColumnReorder="False"
+                                                        ColumnHeaderContainerStyle="{StaticResource dsxHeaderStyle}"
+                                                        ColumnFilterContainerStyle="{StaticResource dsxFilterStyle}"
+                                                        ColumnFooterContainerStyle="{StaticResource dsxFooterStyle}">
+                                    </local:DsxGridView>
+                                </ListView.View>
+                            </ListView>
+                        </DockPanel>
+
+                        <DockPanel Grid.Column="2">
+                            <ListView x:Name="PART_ListViewCenter"
+                                      FocusVisualStyle="{x:Null}"
+                                      BorderThickness="0"
+                                      Padding="0"
+                                      SelectionMode="Single"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      ItemContainerStyle="{StaticResource dsxRowItem}"
+                                      Style="{StaticResource DsxDataGrid}"
+                                      
+                                      VirtualizingStackPanel.IsVirtualizing="{Binding Path=IsVirtualizing, Mode=OneTime, RelativeSource={RelativeSource TemplatedParent}}"
+                                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                                      
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.IsDeferredScrollingEnabled="False"
+                                      ScrollViewer.HorizontalScrollBarVisibility="{Binding Path=HorizontalScrollbarVisibility, Mode=OneTime, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                                <!-- beware: as soon the CanContentScroll is false or a GroupStyle is set, virtualizing is turned of-->
+
+                                <ListView.View>
+                                    <local:DsxGridView  x:Name="PART_GridViewCenter"
+                                                        ParentDataGrid="{Binding Path=., 
+                                                                                 Mode=OneTime,
+                                                                                 RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DsxDataGrid}}}"
+                                                        AllowsColumnReorder="False"
+                                                        ColumnHeaderContainerStyle="{StaticResource dsxHeaderStyle}"
+                                                        ColumnFilterContainerStyle="{StaticResource dsxFilterStyle}"
+                                                        ColumnFooterContainerStyle="{StaticResource dsxFooterStyle}">
+                                    </local:DsxGridView>
+                                </ListView.View>
+                            </ListView>
+
+                        </DockPanel>
+
+                        <DockPanel 	Grid.Column="4">
+                            <ListView x:Name="PART_ListViewRight" 
+                                      FocusVisualStyle="{x:Null}"
+                                      BorderThickness="0"
+                                      Padding="0"
+                                      SelectionMode="Single"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      ItemContainerStyle="{StaticResource dsxRowItem}"
+                                      Style="{StaticResource DsxDataGrid}"
+                                      
+                                      VirtualizingStackPanel.IsVirtualizing="{Binding Path=IsVirtualizing, Mode=OneTime, RelativeSource={RelativeSource TemplatedParent}}"
+                                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                                      
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.IsDeferredScrollingEnabled="False"
+                                      ScrollViewer.HorizontalScrollBarVisibility="{Binding Path=HorizontalScrollbarVisibility, Mode=OneTime, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ScrollViewer.VerticalScrollBarVisibility="Visible">
+
+                                <!-- beware: as soon the CanContentScroll is false or a GroupStyle is set, virtualizing is turned of-->
+
+                                <ListView.View>
+                                    <local:DsxGridView  x:Name="PART_GridViewRight"
+                                                        ParentDataGrid="{Binding Path=., 
+                                                                                 Mode=OneTime,
+                                                                                 RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DsxDataGrid}}}"
+                                                        AllowsColumnReorder="False"
+                                                        ColumnHeaderContainerStyle      ="{StaticResource dsxHeaderStyle}"
+                                                        ColumnFilterContainerStyle      ="{StaticResource dsxFilterStyle}"
+                                                        ColumnFooterContainerStyle      ="{StaticResource dsxFooterStyle}">
+                                    </local:DsxGridView>
+                                </ListView.View>
+                            </ListView>
+                        </DockPanel>
+
+                        <GridSplitter Grid.Column="1" 
+                                      Grid.Row="0"
+                                      HorizontalAlignment="Stretch" 
+                                      VerticalAlignment ="Stretch" 
+                                      ResizeBehavior    ="PreviousAndNext"
+                                      IsEnabled         ="{Binding Path=SplitterLeftIsSizing, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Background        ="{Binding Path=SplitterLeftBackground, RelativeSource={RelativeSource TemplatedParent}}">
+                        </GridSplitter>
+
+                        <GridSplitter Grid.Column="3" 
+                                      Grid.Row="0"
+                                      HorizontalAlignment="Stretch" 
+                                      VerticalAlignment ="Stretch" 
+                                      ResizeBehavior    ="PreviousAndNext"
+                                      IsEnabled         ="{Binding Path=SplitterRightIsSizing, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Background        ="{Binding Path=SplitterRightBackground, RelativeSource={RelativeSource TemplatedParent}}">
+                        </GridSplitter>
+
+                        <Border Grid.Column     ="0" 
+                                Grid.ColumnSpan ="5"
+                                Margin          ="-2"
+                                CornerRadius    ="{Binding Path=CornerRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderBrush     ="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness ="{Binding Path=BorderThickness, RelativeSource={RelativeSource TemplatedParent}}">
+                        </Border>
+
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+  <!-- MINIMIZE -->
+  <Border x:Key="WindowButtonMinimizeIcon" Width="12" Height="5" Margin="0,5,0,0" BorderBrush="#535666" BorderThickness="1" Background="#FFFFFF" />
+    
+  <!-- MINIMIZE (disabled) -->
+  <Border x:Key="WindowButtonMinimizeIconDisabled" Width="12" Height="5" Margin="0,5,0,0" 
+          BorderBrush="#9FA5B2" BorderThickness="1" Background="#FFFFFF" />
+
+  <!-- RESTORE -->
+  <Canvas x:Key="WindowButtonRestoreIcon">
+    <Rectangle Stroke="#535666" Fill="White" Width="10" Height="10" Canvas.Top="1" Canvas.Left="7" />
+    <Rectangle Stroke="#535666" Fill="White" Width="4" Height="4" Canvas.Top="4" Canvas.Left="10" />
+    <Rectangle Stroke="#535666" Fill="White" Width="10" Height="10" Canvas.Top="3" Canvas.Left="5" />
+    <Rectangle Stroke="#535666" Fill="White" Width="4" Height="4" Canvas.Top="6" Canvas.Left="8" />
+  </Canvas>
+
+  <!-- RESTORE (disabled) -->
+  <Canvas x:Key="WindowButtonRestoreIconDisabled">
+    <Rectangle Stroke="#9FA5B2" Fill="White" Width="10" Height="10" Canvas.Top="1" Canvas.Left="7" />
+    <Rectangle Stroke="#9FA5B2" Fill="White" Width="4" Height="4" Canvas.Top="4" Canvas.Left="10" />
+    <Rectangle Stroke="#9FA5B2" Fill="White" Width="10" Height="10" Canvas.Top="3" Canvas.Left="5" />
+    <Rectangle Stroke="#9FA5B2" Fill="White" Width="4" Height="4" Canvas.Top="6" Canvas.Left="8" />
+  </Canvas>
+
+  <!-- MAXIMIZE -->
+  <Border x:Key="WindowButtonMaximizeIcon" BorderBrush="#535666" BorderThickness="1" Width="12" Height="10">
+    <Border BorderBrush="#FCFCFC" BorderThickness="2">
+      <Border BorderBrush="#535666" BorderThickness="1" />
+    </Border>
+  </Border>
+
+
+  <!-- MAXIMIZE (disabled) -->
+  <Border x:Key="WindowButtonMaximizeIconDisabled" BorderBrush="#9FA5B2" BorderThickness="1" Width="12" Height="10">
+    <Border BorderBrush="#FCFCFC" BorderThickness="2">
+      <Border BorderBrush="#9FA5B2" BorderThickness="1" />
+    </Border>
+  </Border>
+
+  <!-- CLOSE -->
+    <Image Source="pack://application:,,,/Yuhan.WPF.CustomWindow;component/Images/buttonX.png" Width="13" Height="10" x:Key="WindowButtonCloseIcon" />
+
+  <!-- Background colors for red button (e.g close button) -->
+  <LinearGradientBrush x:Key="RedButtonBackground" StartPoint="0,0" EndPoint="0,1">
+    <GradientStop Offset="0" Color="#F89C8C" />
+    <GradientStop Offset="0.45" Color="#D47F75" />
+    <GradientStop Offset="0.45" Color="#C04C3C" />
+    <GradientStop Offset="1" Color="#C98172" />
+  </LinearGradientBrush>
+
+  <LinearGradientBrush x:Key="RedButtonMouseOverBackground" StartPoint="0,0" EndPoint="0,1">
+    <GradientStop Offset="0" Color="#F89C8C" />
+    <GradientStop Offset="0.45" Color="#E36A53" />
+    <GradientStop Offset="0.45" Color="#C72B0E" />
+    <GradientStop Offset="0.75" Color="#D44310" />
+    <GradientStop Offset="1" Color="#F5E478" />
+  </LinearGradientBrush>
+
+
+</ResourceDictionary>

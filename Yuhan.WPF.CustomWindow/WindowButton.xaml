@@ -1,0 +1,53 @@
+﻿<Button x:Class="Yuhan.WPF.CustomWindow.WindowButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    SnapsToDevicePixels="True"
+    x:Name="myUcName">
+  <Button.Resources>
+    <LinearGradientBrush x:Key="DefaultBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+      <GradientStop Color="#E2EAF3" Offset="0" />
+      <GradientStop Color="#C3CEDC" Offset="0.45" />
+      <GradientStop Color="#A2B1C4" Offset="0.45" />
+      <GradientStop Color="#B4C3DB" Offset="1" />
+    </LinearGradientBrush>
+  </Button.Resources>
+    <Button.Template>
+        <ControlTemplate TargetType="Button">
+            <Border x:Name="MainBorder" BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="1,0,1,1" CornerRadius="{Binding ElementName=myUcName, Path=CornerRadius}"
+                    Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+                <Grid>
+                    <Border x:Name="HighlightBorder" CornerRadius="{Binding ElementName=myUcName, Path=CornerRadius}">
+                        <ContentControl x:Name="ContentPlaceHolder" Content="{Binding ElementName=myUcName, Path=ActiveContent}" Margin="0,-1,0,0" />
+                    </Border>
+                    <Border x:Name="WhiteBorder" BorderBrush="#88FFFFFF" BorderThickness="1,0,1,1"
+                            CornerRadius="{Binding ElementName=myUcName, Path=CornerRadius}" />
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="HighlightBorder" Property="Background" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+    <Button.Style>
+    <Style TargetType="Button">
+      <Setter Property="Width" Value="26" />
+      <Setter Property="Height" Value="16" />
+      <Setter Property="BorderBrush" Value="#4C5258" />
+      <Setter Property="Background" Value="{StaticResource DefaultBackgroundBrush}" />
+      <Setter Property="Foreground">
+        <Setter.Value>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#ADCEE8" Offset="0" />
+            <GradientStop Color="#70A3C7" Offset="0.45" />
+            <GradientStop Color="#1E6FA5" Offset="0.45" />
+            <GradientStop Color="#2782B4" Offset="0.80" />
+            <GradientStop Color="#17FBFA" Offset="1" />
+          </LinearGradientBrush>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Button.Style>
+</Button>

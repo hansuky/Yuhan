@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NorthwindDataSet>
+  <Customers>
+    <CustomerID>ALFKI</CustomerID>
+    <CompanyName>Alfreds Futterkiste</CompanyName>
+    <ContactName>Maria Anders</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Obere Str. 57</Address>
+    <City>Berlin</City>
+    <PostalCode>12209</PostalCode>
+    <Country>Germany</Country>
+    <Phone>030-0074321</Phone>
+    <Fax>030-0076545</Fax>
+    <DateRegistered>1997-01-21T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>ANATR</CustomerID>
+    <CompanyName>Ana Trujillo Emparedados y helados</CompanyName>
+    <ContactName>Ana Trujillo</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>Avda. de la Constitución 2222</Address>
+    <City>México D.F.</City>
+    <PostalCode>05021</PostalCode>
+    <Country>Mexico</Country>
+    <Phone>(5) 555-4729</Phone>
+    <Fax>(5) 555-3745</Fax>
+    <DateRegistered>1997-05-12T00:00:00</DateRegistered>
+    <Coverage>80.2</Coverage>
+    <Sales>45600.24</Sales>
+</Customers>
+  <Customers>
+    <CustomerID>ANTON</CustomerID>
+    <CompanyName>Antonio Moreno Taquería</CompanyName>
+    <ContactName>Antonio Moreno</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>Mataderos  2312</Address>
+    <City>México D.F.</City>
+    <PostalCode>05023</PostalCode>
+    <Country>Mexico</Country>
+    <Phone>(5) 555-3932</Phone>
+    <DateRegistered>1997-04-10T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>AROUT</CustomerID>
+    <CompanyName>Around the Horn</CompanyName>
+    <ContactName>Thomas Hardy</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>120 Hanover Sq.</Address>
+    <City>London</City>
+    <PostalCode>WA1 1DP</PostalCode>
+    <Country>UK</Country>
+    <Phone>(171) 555-7788</Phone>
+    <Fax>(171) 555-6750</Fax>
+    <DateRegistered>1997-12-02T00:00:00</DateRegistered>
+    <Coverage>94.3</Coverage>
+    <Sales>134569.55</Sales>
+  </Customers>
+  <Customers>
+    <CustomerID>BERGS</CustomerID>
+    <CompanyName>Berglunds snabbköp</CompanyName>
+    <ContactName>Christina Berglund</ContactName>
+    <ContactTitle>Order Administrator</ContactTitle>
+    <Address>Berguvsvägen  8</Address>
+    <City>Luleå</City>
+    <PostalCode>S-958 22</PostalCode>
+    <Country>Sweden</Country>
+    <Phone>0921-12 34 65</Phone>
+    <Fax>0921-12 34 67</Fax>
+    <DateRegistered>1996-08-07T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>BLAUS</CustomerID>
+    <CompanyName>Blauer See Delikatessen</CompanyName>
+    <ContactName>Hanna Moos</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Forsterstr. 57</Address>
+    <City>Mannheim</City>
+    <PostalCode>68306</PostalCode>
+    <Country>Germany</Country>
+    <Phone>0621-08460</Phone>
+    <Fax>0621-08924</Fax>
+    <DateRegistered>1997-04-25T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>BLONP</CustomerID>
+    <CompanyName>Blondesddsl père et fils</CompanyName>
+    <ContactName>Frédérique Citeaux</ContactName>
+    <ContactTitle>Marketing Manager</ContactTitle>
+    <Address>24, place Kléber</Address>
+    <City>Strasbourg</City>
+    <PostalCode>67000</PostalCode>
+    <Country>France</Country>
+    <Phone>88.60.15.31</Phone>
+    <Fax>88.60.15.32</Fax>
+    <DateRegistered>1996-09-05T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>BOLID</CustomerID>
+    <CompanyName>Bólido Comidas preparadas</CompanyName>
+    <ContactName>Martín Sommer</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>C/ Araquil, 67</Address>
+    <City>Madrid</City>
+    <PostalCode>28023</PostalCode>
+    <Country>Spain</Country>
+    <Phone>(91) 555 22 82</Phone>
+    <Fax>(91) 555 91 99</Fax>
+    <DateRegistered>1996-09-13T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>BONAP</CustomerID>
+    <CompanyName>Bon app'</CompanyName>
+    <ContactName>Laurence Lebihan</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>12, rue des Bouchers</Address>
+    <City>Marseille</City>
+    <PostalCode>13008</PostalCode>
+    <Country>France</Country>
+    <Phone>91.24.45.40</Phone>
+    <Fax>91.24.45.41</Fax>
+    <DateRegistered>1998-02-03T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>BOTTM</CustomerID>
+    <CompanyName>Bottom-Dollar Markets</CompanyName>
+    <ContactName>Elizabeth Lincoln</ContactName>
+    <ContactTitle>Accounting Manager</ContactTitle>
+    <Address>23 Tsawassen Blvd.</Address>
+    <City>Tsawassen</City>
+    <Region>BC</Region>
+    <PostalCode>T2F 8M4</PostalCode>
+    <Country>Canada</Country>
+    <Phone>(604) 555-4729</Phone>
+    <Fax>(604) 555-3745</Fax>
+    <DateRegistered>1997-11-05T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>BSBEV</CustomerID>
+    <CompanyName>B's Beverages</CompanyName>
+    <ContactName>Victoria Ashworth</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Fauntleroy Circus</Address>
+    <City>London</City>
+    <PostalCode>EC2 5NT</PostalCode>
+    <Country>UK</Country>
+    <Phone>(171) 555-1212</Phone>
+    <DateRegistered>1997-08-14T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>CACTU</CustomerID>
+    <CompanyName>Cactus Comidas para llevar</CompanyName>
+    <ContactName>Patricio Simpson</ContactName>
+    <ContactTitle>Sales Agent</ContactTitle>
+    <Address>Cerrito 333</Address>
+    <City>Buenos Aires</City>
+    <PostalCode>1010</PostalCode>
+    <Country>Argentina</Country>
+    <Phone>(1) 135-5555</Phone>
+    <Fax>(1) 135-4892</Fax>
+    <DateRegistered>1998-02-20T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>CENTC</CustomerID>
+    <CompanyName>Centro comercial Moctezuma</CompanyName>
+    <ContactName>Francisco Chang</ContactName>
+    <ContactTitle>Marketing Manager</ContactTitle>
+    <Address>Sierras de Granada 9993</Address>
+    <City>México D.F.</City>
+    <PostalCode>05022</PostalCode>
+    <Country>Mexico</Country>
+    <Phone>(5) 555-3392</Phone>
+    <Fax>(5) 555-7293</Fax>
+    <DateRegistered>1996-08-07T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>CHOPS</CustomerID>
+    <CompanyName>Chop-suey Chinese</CompanyName>
+    <ContactName>Yang Wang</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>Hauptstr. 29</Address>
+    <City>Bern</City>
+    <PostalCode>3012</PostalCode>
+    <Country>Switzerland</Country>
+    <Phone>0452-076545</Phone>
+    <DateRegistered>1998-02-04T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>COMMI</CustomerID>
+    <CompanyName>Comércio Mineiro</CompanyName>
+    <ContactName>Pedro Afonso</ContactName>
+    <ContactTitle>Sales Associate</ContactTitle>
+    <Address>Av. dos Lusíadas, 23</Address>
+    <City>Sao Paulo</City>
+    <Region>SP</Region>
+    <PostalCode>05432-043</PostalCode>
+    <Country>Brazil</Country>
+    <Phone>(11) 555-7647</Phone>
+    <DateRegistered>1997-02-19T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>CONSH</CustomerID>
+    <CompanyName>Consolidated Holdings</CompanyName>
+    <ContactName>Elizabeth Brown</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Berkeley Gardens 12  Brewery</Address>
+    <City>London</City>
+    <PostalCode>WX1 6LT</PostalCode>
+    <Country>UK</Country>
+    <Phone>(171) 555-2282</Phone>
+    <Fax>(171) 555-9199</Fax>
+    <DateRegistered>1997-02-04T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>DRACD</CustomerID>
+    <CompanyName>Drachenblut Delikatessen</CompanyName>
+    <ContactName>Sven Ottlieb</ContactName>
+    <ContactTitle>Order Administrator</ContactTitle>
+    <Address>Walserweg 21</Address>
+    <City>Aachen</City>
+    <PostalCode>52066</PostalCode>
+    <Country>Germany</Country>
+    <Phone>0241-039123</Phone>
+    <Fax>0241-059428</Fax>
+    <DateRegistered>1998-02-10T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>DUMON</CustomerID>
+    <CompanyName>Du monde entier</CompanyName>
+    <ContactName>Janine Labrune</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>67, rue des Cinquante Otages</Address>
+    <City>Nantes</City>
+    <PostalCode>44000</PostalCode>
+    <Country>France</Country>
+    <Phone>40.67.88.88</Phone>
+    <Fax>40.67.89.89</Fax>
+    <DateRegistered>1996-10-18T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>EASTC</CustomerID>
+    <CompanyName>Eastern Connection</CompanyName>
+    <ContactName>Ann Devon</ContactName>
+    <ContactTitle>Sales Agent</ContactTitle>
+    <Address>35 King George</Address>
+    <City>London</City>
+    <PostalCode>WX3 6FW</PostalCode>
+    <Country>UK</Country>
+    <Phone>(171) 555-0297</Phone>
+    <Fax>(171) 555-3373</Fax>
+    <DateRegistered>1998-03-31T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>ERNSH</CustomerID>
+    <CompanyName>Ernst Handel</CompanyName>
+    <ContactName>Roland Mendel</ContactName>
+    <ContactTitle>Sales Manager</ContactTitle>
+    <Address>Kirchgasse 6</Address>
+    <City>Graz</City>
+    <PostalCode>8010</PostalCode>
+    <Country>Austria</Country>
+    <Phone>7675-3425</Phone>
+    <Fax>7675-3426</Fax>
+    <DateRegistered>1997-04-22T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>FAMIA</CustomerID>
+    <CompanyName>Familia Arquibaldo</CompanyName>
+    <ContactName>Aria Cruz</ContactName>
+    <ContactTitle>Marketing Assistant</ContactTitle>
+    <Address>Rua Orós, 92</Address>
+    <City>Sao Paulo</City>
+    <Region>SP</Region>
+    <PostalCode>05442-030</PostalCode>
+    <Country>Brazil</Country>
+    <Phone>(11) 555-9857</Phone>
+    <DateRegistered>1997-07-02T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>FISSA</CustomerID>
+    <CompanyName>FISSA Fabrica Inter. Salchichas S.A.</CompanyName>
+    <ContactName>Diego Roel</ContactName>
+    <ContactTitle>Accounting Manager</ContactTitle>
+    <Address>C/ Moralzarzal, 86</Address>
+    <City>Madrid</City>
+    <PostalCode>28034</PostalCode>
+    <Country>Spain</Country>
+    <Phone>(91) 555 94 44</Phone>
+    <Fax>(91) 555 55 93</Fax>
+    <DateRegistered>1997-04-10T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>FOLIG</CustomerID>
+    <CompanyName>Folies gourmandes</CompanyName>
+    <ContactName>Martine Rancé</ContactName>
+    <ContactTitle>Assistant Sales Agent</ContactTitle>
+    <Address>184, chaussée de Tournai</Address>
+    <City>Lille</City>
+    <PostalCode>59000</PostalCode>
+    <Country>France</Country>
+    <Phone>20.16.10.16</Phone>
+    <Fax>20.16.10.17</Fax>
+    <DateRegistered>1997-09-10T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>GROSR</CustomerID>
+    <CompanyName>GROSELLA-Restaurante</CompanyName>
+    <ContactName>Manuel Pereira</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>5ª Ave. Los Palos Grandes</Address>
+    <City>Caracas</City>
+    <Region>DF</Region>
+    <PostalCode>1081</PostalCode>
+    <Country>Venezuela</Country>
+    <Phone>(2) 283-2951</Phone>
+    <Fax>(2) 283-3397</Fax>
+    <DateRegistered>1998-01-07T00:00:00</DateRegistered>
+  </Customers>
+ <Customers>
+    <CustomerID>HUNGO</CustomerID>
+    <CompanyName>Hungry Owl All-Night Grocers</CompanyName>
+    <ContactName>Patricia McKenna</ContactName>
+    <ContactTitle>Sales Associate</ContactTitle>
+    <Address>8 Johnstown Road</Address>
+    <City>Cork</City>
+    <Region>Co. Cork</Region>
+    <Country>Ireland</Country>
+    <Phone>2967 542</Phone>
+    <Fax>2967 3333</Fax>
+    <DateRegistered>1996-08-13T00:00:00</DateRegistered>
+  </Customers>
+ <Customers>
+    <CustomerID>LEHMS</CustomerID>
+    <CompanyName>Lehmanns Marktstand</CompanyName>
+    <ContactName>Renate Messner</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Magazinweg 7</Address>
+    <City>Frankfurt a.M.</City>
+    <PostalCode>60528</PostalCode>
+    <Country>Germany</Country>
+    <Phone>069-0245984</Phone>
+    <Fax>069-0245874</Fax>
+    <DateRegistered>1996-12-16T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>LETSS</CustomerID>
+    <CompanyName>Let's Stop N Shop</CompanyName>
+    <ContactName>Jaime Yorres</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>87 Polk St. Suite 5</Address>
+    <City>San Francisco</City>
+    <Region>CA</Region>
+    <PostalCode>94117</PostalCode>
+    <Country>USA</Country>
+    <Phone>(415) 555-5938</Phone>
+    <DateRegistered>1996-10-23T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>PICCO</CustomerID>
+    <CompanyName>Piccolo und mehr</CompanyName>
+    <ContactName>Georg Pipps</ContactName>
+    <ContactTitle>Sales Manager</ContactTitle>
+    <Address>Geislweg 14</Address>
+    <City>Salzburg</City>
+    <PostalCode>5020</PostalCode>
+    <Country>Austria</Country>
+    <Phone>6562-9722</Phone>
+    <Fax>6562-9723</Fax>
+    <DateRegistered>1997-06-06T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>PRINI</CustomerID>
+    <CompanyName>Princesa Isabel Vinhos</CompanyName>
+    <ContactName>Isabel de Castro</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Estrada da saúde n. 58</Address>
+    <City>Lisboa</City>
+    <PostalCode>1756</PostalCode>
+    <Country>Portugal</Country>
+    <Phone>(1) 356-5634</Phone>
+    <DateRegistered>1998-02-04T00:00:00</DateRegistered>
+  </Customers>
+ <Customers>
+    <CustomerID>RANCH</CustomerID>
+    <CompanyName>Rancho grande</CompanyName>
+    <ContactName>Sergio Gutiérrez</ContactName>
+    <ContactTitle>Sales Representative</ContactTitle>
+    <Address>Av. del Libertador 900</Address>
+    <City>Buenos Aires</City>
+    <PostalCode>1010</PostalCode>
+    <Country>Argentina</Country>
+    <Phone>(1) 123-5555</Phone>
+    <Fax>(1) 123-5556</Fax>
+    <DateRegistered>1997-11-17T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>REGGC</CustomerID>
+    <CompanyName>Reggiani Caseifici</CompanyName>
+    <ContactName>Maurizio Moroni</ContactName>
+    <ContactTitle>Sales Associate</ContactTitle>
+    <Address>Strada Provinciale 124</Address>
+    <City>Reggio Emilia</City>
+    <PostalCode>42100</PostalCode>
+    <Country>Italy</Country>
+    <Phone>0522-556721</Phone>
+    <Fax>0522-556722</Fax>
+    <DateRegistered>1996-11-06T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>RICAR</CustomerID>
+    <CompanyName>Ricardo Adocicados</CompanyName>
+    <ContactName>Janete Limeira</ContactName>
+    <ContactTitle>Assistant Sales Agent</ContactTitle>
+    <Address>Av. Copacabana, 267</Address>
+    <City>Rio de Janeiro</City>
+    <Region>RJ</Region>
+    <PostalCode>02389-890</PostalCode>
+    <Country>Brazil</Country>
+    <Phone>(21) 555-3412</Phone>
+    <DateRegistered>1996-08-19T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>RICSU</CustomerID>
+    <CompanyName>Richter Supermarkt</CompanyName>
+    <ContactName>Michael Holz</ContactName>
+    <ContactTitle>Sales Manager</ContactTitle>
+    <Address>Grenzacherweg 237</Address>
+    <City>Genève</City>
+    <PostalCode>1203</PostalCode>
+    <Country>Switzerland</Country>
+    <Phone>0897-034214</Phone>
+    <DateRegistered>1997-02-03T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>SANTG</CustomerID>
+    <CompanyName>Santé Gourmet</CompanyName>
+    <ContactName>Jonas Bergulfsen</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>Erling Skakkes gate 78</Address>
+    <City>Stavern</City>
+    <PostalCode>4110</PostalCode>
+    <Country>Norway</Country>
+    <Phone>07-98 92 35</Phone>
+    <Fax>07-98 92 47</Fax>
+    <DateRegistered>1998-03-20T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>SIMOB</CustomerID>
+    <CompanyName>Simons bistro</CompanyName>
+    <ContactName>Jytte Petersen</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>Vinbæltet 34</Address>
+    <City>Kobenhavn</City>
+    <PostalCode>1734</PostalCode>
+    <Country>Denmark</Country>
+    <Phone>31 12 34 56</Phone>
+    <Fax>31 13 35 57</Fax>
+    <DateRegistered>1997-02-19T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>SUPRD</CustomerID>
+    <CompanyName>Suprêmes délices</CompanyName>
+    <ContactName>Pascale Cartrain</ContactName>
+    <ContactTitle>Accounting Manager</ContactTitle>
+    <Address>Boulevard Tirou, 255</Address>
+    <City>Charleroi</City>
+    <PostalCode>B-6000</PostalCode>
+    <Country>Belgium</Country>
+    <Phone>(071) 23 67 22 20</Phone>
+    <Fax>(071) 23 67 22 21</Fax>
+    <DateRegistered>1997-06-30T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>WHITC</CustomerID>
+    <CompanyName>White Clover Markets</CompanyName>
+    <ContactName>Karl Jablonski</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>305 - 14th Ave. S. Suite 3B</Address>
+    <City>Seattle</City>
+    <Region>WA</Region>
+    <PostalCode>98128</PostalCode>
+    <Country>USA</Country>
+    <Phone>(206) 555-4112</Phone>
+    <Fax>(206) 555-4115</Fax>
+    <DateRegistered>1997-11-26T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>WILMK</CustomerID>
+    <CompanyName>Wilman Kala</CompanyName>
+    <ContactName>Matti Karttunen</ContactName>
+    <ContactTitle>Owner/Marketing Assistant</ContactTitle>
+    <Address>Keskuskatu 45</Address>
+    <City>Helsinki</City>
+    <PostalCode>21240</PostalCode>
+    <Country>Finland</Country>
+    <Phone>90-224 8858</Phone>
+    <Fax>90-224 8858</Fax>
+    <DateRegistered>1997-03-11T00:00:00</DateRegistered>
+  </Customers>
+  <Customers>
+    <CustomerID>WOLZA</CustomerID>
+    <CompanyName>Wolski  Zajazd</CompanyName>
+    <ContactName>Zbyszek Piestrzeniewicz</ContactName>
+    <ContactTitle>Owner</ContactTitle>
+    <Address>ul. Filtrowa 68</Address>
+    <City>Warszawa</City>
+    <PostalCode>01-012</PostalCode>
+    <Country>Poland</Country>
+    <Phone>(26) 642-7012</Phone>
+    <Fax>(26) 642-7012</Fax>
+    <DateRegistered>1997-08-06T00:00:00</DateRegistered>
+  </Customers>
+</NorthwindDataSet>

@@ -1,0 +1,402 @@
+﻿<ResourceDictionary 
+    xmlns       ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x     ="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:sys   ="clr-namespace:System;assembly=mscorlib"
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"    
+    xmlns:local="clr-namespace:Yuhan.WPF.DsxGridCtrl">
+    
+    <ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- =================================================== -->
+    <!-- gray -->
+    
+    <!-- brushHeaderBackgroundGray -->
+    <LinearGradientBrush x:Key="brushHeaderBackgroundGray"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+            <GradientStop Color="#FFBEC1C4" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushHeaderPressedBackgroundGray -->
+    <LinearGradientBrush x:Key="brushHeaderPressedBackgroundGray"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFFFFF" Offset="1"/>
+            <GradientStop Color="#FFBEC1C4" Offset="0"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFilterBackgroundGray -->
+    <LinearGradientBrush x:Key="brushFilterBackgroundGray"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFEBEEFA" Offset="0"/>
+            <GradientStop Color="#FFD6DAE4" Offset="0.4"/>
+            <GradientStop Color="#FFC5C7D1" Offset="0.4"/>
+            <GradientStop Color="#FFD4D8E2" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushCriteriaBackgroundGray -->
+    <LinearGradientBrush x:Key="brushCriteriaBackgroundGray"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFBEC1C4" Offset="0"/>
+            <GradientStop Color="#FFDADFE6" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFooterBackgroundGray -->
+    <LinearGradientBrush x:Key="brushFooterBackgroundGray"
+						 StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFEBEEFA" Offset="0"/>
+            <GradientStop Color="#FFD6DAE4" Offset="0.4"/>
+            <GradientStop Color="#FFC5C7D1" Offset="0.7"/>
+            <GradientStop Color="#FFD4D8E2" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- dsxHeaderStyleGray -->
+    <Style x:Key="dsxHeaderStyleGray" TargetType="local:DsxHeaderStyle">
+        <Setter Property="Background" Value="{StaticResource brushHeaderBackgroundGray}"/>
+        <Setter Property="PressedBackground" Value="{StaticResource brushHeaderPressedBackgroundGray}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,2"/>
+        <Setter Property="BorderBrush" Value="#FF6D6D6D"/>
+        <Setter Property="GripperBrush" Value="#FF6D6D6D"/>
+    </Style>
+
+    <!-- dsxFilterStyleGray -->
+    <Style x:Key="dsxFilterStyleGray" TargetType="local:DsxFilterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFilterBackgroundGray}"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="BorderBrush" Value="#FF6D6D6D"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="CriteriaBackground" Value="{StaticResource brushCriteriaBackgroundGray}"/>
+    </Style>
+
+    <!-- dsxFooterStyleGray -->
+    <Style x:Key="dsxFooterStyleGray" TargetType="local:DsxFooterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFooterBackgroundGray}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
+        <Setter Property="BorderBrush" Value="#FF9D9D9D"/>
+    </Style>
+
+    <!-- dsxDataGridStyleGray -->
+    <Style x:Key="dsxDataGridStyleGray" TargetType="local:DsxDataGrid">
+       
+        <Setter Property="Background"                       Value="#FFF0F0F0"/>
+        <Setter Property="BorderBrush"                      Value="DarkGray"/>
+        
+        <Setter Property="SelectedRowBrush"                 Value="#FFE8E8E8"/>
+
+        <Setter Property="CellAdornerViewBorderBrush"       Value="DimGray"/>
+        <Setter Property="CellAdornerEditableBorderBrush"   Value="DarkGray"/>
+        <Setter Property="CellAdornerEditingBorderBrush"    Value="#FF404040"/>
+        <Setter Property="CellAdornerFilterBorderBrush"     Value="DimGray"/>
+        <Setter Property="SortAdornerIndicatorBrush"        Value="DimGray"/>
+
+        <Setter Property="SplitterLeftBackground"           Value="DarkGray"/>
+        <Setter Property="SplitterRightBackground"          Value="DarkGray"/>
+        <Setter Property="HorizontalGridLinesBrush"         Value="DimGray"/>
+        <Setter Property="VerticalGridLinesBrush"           Value="DimGray"/>
+    </Style>
+
+    <!-- =================================================== -->
+    <!-- blue -->
+
+    <!-- brushHeaderBackgroundBlue -->
+    <LinearGradientBrush x:Key="brushHeaderBackgroundBlue"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFE3EFFF" Offset="0"/>
+            <GradientStop Color="#FFAFD2FF" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushHeaderPressedBackgroundBlue -->
+    <LinearGradientBrush x:Key="brushHeaderPressedBackgroundBlue"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFE3EFFF" Offset="1"/>
+            <GradientStop Color="#FFAFD2FF" Offset="0"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFilterBackgroundBlue -->
+    <LinearGradientBrush x:Key="brushFilterBackgroundBlue"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFE3EFFF" Offset="0"/>
+            <GradientStop Color="#FFC4DDFF" Offset="0.4"/>
+            <GradientStop Color="#FFAED1FF" Offset="0.4"/>
+            <GradientStop Color="#FFC0DBFF" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushCriteriaBackgroundBlue -->
+    <LinearGradientBrush x:Key="brushCriteriaBackgroundBlue"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFC4DDFF" Offset="0"/>
+            <GradientStop Color="#FFAFD2FF" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFooterBackgroundBlue -->
+    <LinearGradientBrush x:Key="brushFooterBackgroundBlue"
+						 StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFE3EFFF" Offset="0"/>
+            <GradientStop Color="#FFC4DDFF" Offset="0.4"/>
+            <GradientStop Color="#FFAED1FF" Offset="0.7"/>
+            <GradientStop Color="#FFC0DBFF" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- dsxHeaderStyleBlue -->
+    <Style x:Key="dsxHeaderStyleBlue" TargetType="local:DsxHeaderStyle">
+        <Setter Property="Background" Value="{StaticResource brushHeaderBackgroundBlue}"/>
+        <Setter Property="PressedBackground" Value="{StaticResource brushHeaderPressedBackgroundBlue}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,2"/>
+        <Setter Property="BorderBrush" Value="#FF637B97"/>
+        <Setter Property="GripperBrush" Value="#FF637B97"/>
+    </Style>
+
+    <!-- dsxFilterStyleBlue -->
+    <Style x:Key="dsxFilterStyleBlue" TargetType="local:DsxFilterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFilterBackgroundBlue}"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="BorderBrush" Value="#FF637B97"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="CriteriaBackground" Value="{StaticResource brushCriteriaBackgroundBlue}"/>
+    </Style>
+
+    <!-- dsxFooterStyleBlue -->
+    <Style x:Key="dsxFooterStyleBlue" TargetType="local:DsxFooterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFooterBackgroundBlue}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
+        <Setter Property="BorderBrush" Value="#FF91A4BA"/>
+    </Style>
+
+    <!-- dsxDataGridStyleBlue -->
+    <Style x:Key="dsxDataGridStyleBlue" TargetType="local:DsxDataGrid">
+
+        <Setter Property="Background"                       Value="#FFEDF2FE"/>
+        <Setter Property="BorderBrush"                      Value="Navy"/>
+        
+        <Setter Property="SelectedRowBrush"                 Value="#FFB5C7FA"/>
+
+        <Setter Property="CellAdornerViewBorderBrush"       Value="DarkBlue"/>
+        <Setter Property="CellAdornerEditableBorderBrush"   Value="Navy"/>
+        <Setter Property="CellAdornerEditingBorderBrush"    Value="#FF0A0066"/>
+        <Setter Property="CellAdornerFilterBorderBrush"     Value="DarkBlue"/>
+        <Setter Property="SortAdornerIndicatorBrush"        Value="DarkBlue"/>
+
+        <Setter Property="SplitterLeftBackground"           Value="Navy"/>
+        <Setter Property="SplitterRightBackground"          Value="Navy"/>
+        <Setter Property="HorizontalGridLinesBrush"         Value="#FF637B97"/>
+        <Setter Property="VerticalGridLinesBrush"           Value="#FF637B97"/>
+    </Style>
+
+
+    <!-- =================================================== -->
+    <!-- orange -->
+    
+    <!-- brushHeaderBackgroundOrange -->
+    <LinearGradientBrush x:Key="brushHeaderBackgroundOrange"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFF7DE" Offset="0"/>
+            <GradientStop Color="#FFFFE5C4" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushHeaderPressedBackgroundOrange -->
+    <LinearGradientBrush x:Key="brushHeaderPressedBackgroundOrange"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFF7DE" Offset="1"/>
+            <GradientStop Color="#FFFFE5C4" Offset="0"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFilterBackgroundOrange -->
+    <LinearGradientBrush x:Key="brushFilterBackgroundOrange"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFF5E3" Offset="0"/>
+            <GradientStop Color="#FFFDE6BC" Offset="0.4"/>
+            <GradientStop Color="#FFFFD9B2" Offset="0.4"/>
+            <GradientStop Color="#FFFFE5C4" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushCriteriaBackgroundOrange -->
+    <LinearGradientBrush x:Key="brushCriteriaBackgroundOrange"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFE5C4" Offset="0"/>
+            <GradientStop Color="#FFFDE6BC" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFooterBackgroundOrange -->
+    <LinearGradientBrush x:Key="brushFooterBackgroundOrange"
+						StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFF5E3" Offset="0"/>
+            <GradientStop Color="#FFFDE6BC" Offset="0.4"/>
+            <GradientStop Color="#FFFFD9B2" Offset="0.7"/>
+            <GradientStop Color="#FFFFE5C4" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- dsxHeaderStyleOrange -->
+    <Style x:Key="dsxHeaderStyleOrange" TargetType="local:DsxHeaderStyle">
+        <Setter Property="Background" Value="{StaticResource brushHeaderBackgroundOrange}"/>
+        <Setter Property="PressedBackground" Value="{StaticResource brushHeaderPressedBackgroundOrange}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,2"/>
+        <Setter Property="BorderBrush" Value="#FFBC5959"/>
+        <Setter Property="GripperBrush" Value="#FFBC5959"/>
+    </Style>
+
+    <!-- dsxFilterStyleOrange -->
+    <Style x:Key="dsxFilterStyleOrange" TargetType="local:DsxFilterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFilterBackgroundOrange}"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="BorderBrush" Value="#FFBC5959"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="CriteriaBackground" Value="{StaticResource brushCriteriaBackgroundOrange}"/>
+    </Style>
+
+    <!-- dsxFooterStyleOrange -->
+    <Style x:Key="dsxFooterStyleOrange" TargetType="local:DsxFooterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFooterBackgroundOrange}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
+        <Setter Property="BorderBrush" Value="#FFBC5959"/>
+    </Style>
+
+    <!-- dsxDataGridStyleOrange -->
+    <Style x:Key="dsxDataGridStyleOrange" TargetType="local:DsxDataGrid">
+
+        <Setter Property="Background"                       Value="#FFFEF8ED"/>
+        <Setter Property="BorderBrush"                      Value="DarkRed"/>
+        
+        <Setter Property="SelectedRowBrush"                 Value="#FFFAC1B5"/>
+
+        <Setter Property="CellAdornerViewBorderBrush"       Value="IndianRed"/>
+        <Setter Property="CellAdornerEditableBorderBrush"   Value="DarkRed"/>
+        <Setter Property="CellAdornerEditingBorderBrush"    Value="#FF8C2512"/>
+        <Setter Property="CellAdornerFilterBorderBrush"     Value="IndianRed"/>
+        <Setter Property="SortAdornerIndicatorBrush"        Value="IndianRed"/>
+
+        <Setter Property="SplitterLeftBackground"           Value="DarkRed"/>
+        <Setter Property="SplitterRightBackground"          Value="DarkRed"/>
+        <Setter Property="HorizontalGridLinesBrush"         Value="#FFBC5959"/>
+        <Setter Property="VerticalGridLinesBrush"           Value="#FFBC5959"/>
+    </Style>
+
+
+    <!-- =================================================== -->
+    <!-- green -->
+
+    <!-- brushHeaderBackgroundGreen -->
+    <LinearGradientBrush x:Key="brushHeaderBackgroundGreen"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFECFFE8" Offset="0"/>
+            <GradientStop Color="#FFDBFFCE" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushHeaderPressedBackgroundGreen -->
+    <LinearGradientBrush x:Key="brushHeaderPressedBackgroundGreen"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFECFFE8" Offset="1"/>
+            <GradientStop Color="#FFDBFFCE" Offset="0"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFilterBackgroundGreen -->
+    <LinearGradientBrush x:Key="brushFilterBackgroundGreen"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFE0FBCC" Offset="0"/>
+            <GradientStop Color="#FFE6FDD1" Offset="0.4"/>
+            <GradientStop Color="#FFCFFFB2" Offset="0.4"/>
+            <GradientStop Color="#FFDDFFC4" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushCriteriaBackgroundGreen -->
+    <LinearGradientBrush x:Key="brushCriteriaBackgroundGreen"
+                         StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFDAFDBC" Offset="0"/>
+            <GradientStop Color="#FFDBFFCE" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- brushFooterBackgroundGreen -->
+    <LinearGradientBrush x:Key="brushFooterBackgroundGreen"
+						 StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFE0FBCC" Offset="0"/>
+            <GradientStop Color="#FFDAFDBC" Offset="0.4"/>
+            <GradientStop Color="#FFCFFFB2" Offset="0.7"/>
+            <GradientStop Color="#FFDDFFC4" Offset="1"/>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <!-- dsxHeaderStyleGreen -->
+    <Style x:Key="dsxHeaderStyleGreen" TargetType="local:DsxHeaderStyle">
+        <Setter Property="Background" Value="{StaticResource brushHeaderBackgroundGreen}"/>
+        <Setter Property="PressedBackground" Value="{StaticResource brushHeaderPressedBackgroundGreen}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,2"/>
+        <Setter Property="BorderBrush" Value="#FF6D9763"/>
+        <Setter Property="GripperBrush" Value="#FF6D9763"/>
+    </Style>
+
+    <!-- dsxFilterStyleGreen -->
+    <Style x:Key="dsxFilterStyleGreen" TargetType="local:DsxFilterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFilterBackgroundGreen}"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="BorderBrush" Value="#FF6D9763"/>
+        <Setter Property="CornerRadius" Value="2"/>
+        <Setter Property="CriteriaBackground" Value="{StaticResource brushCriteriaBackgroundGreen}"/>
+    </Style>
+
+    <!-- dsxFooterStyleGreen -->
+    <Style x:Key="dsxFooterStyleGreen" TargetType="local:DsxFooterStyle">
+        <Setter Property="Background" Value="{StaticResource brushFooterBackgroundGreen}"/>
+        <Setter Property="BorderThickness" Value="0,1,0,1"/>
+        <Setter Property="BorderBrush" Value="#FF85AD7C"/>
+    </Style>
+
+    <!-- dsxDataGridStyleGreen -->
+    <Style x:Key="dsxDataGridStyleGreen" TargetType="local:DsxDataGrid">
+
+        <Setter Property="Background"                       Value="#FFF4FEED"/>
+        <Setter Property="BorderBrush"                      Value="#FF446036"/>
+        
+        <Setter Property="SelectedRowBrush"                 Value="#FFC0E0B6"/>
+
+        <Setter Property="CellAdornerViewBorderBrush"       Value="#FF648652"/>
+        <Setter Property="CellAdornerEditableBorderBrush"   Value="#FF446036"/>
+        <Setter Property="CellAdornerEditingBorderBrush"    Value="#FF2C4320"/>
+        <Setter Property="CellAdornerFilterBorderBrush"     Value="#FF648652"/>
+        <Setter Property="SortAdornerIndicatorBrush"        Value="#FF648652"/>
+
+        <Setter Property="SplitterLeftBackground"           Value="#FF446036"/>
+        <Setter Property="SplitterRightBackground"          Value="#FF446036"/>
+        <Setter Property="HorizontalGridLinesBrush"         Value="#FF6D9763"/>
+        <Setter Property="VerticalGridLinesBrush"           Value="#FF6D9763"/>
+    </Style>
+
+</ResourceDictionary>

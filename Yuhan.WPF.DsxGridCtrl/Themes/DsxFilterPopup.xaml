@@ -1,0 +1,143 @@
+﻿<ResourceDictionary 
+    xmlns       ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x     ="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:sys   ="clr-namespace:System;assembly=mscorlib"
+    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"    
+    xmlns:local="clr-namespace:Yuhan.WPF.DsxGridCtrl">
+    
+    <ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>
+
+    <local:DsxFilterStyleConverter      x:Key="dsxFilterStyleConverter"/>
+
+    <!-- dsxEFilterCriteria -->
+    <ObjectDataProvider x:Key="dsxEFilterCriteria"
+                        MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="local:EFilterCriteria"/>
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    
+    
+    <DataTemplate x:Key="ItemTemplate">
+        <Grid Background="Transparent">
+            <TextBlock Margin="2,0" 
+                       Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                       Text="{Binding}"/>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SelectedTemplate">
+        <Grid Margin="-2,0"
+              Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+            <TextBlock Text="{Binding}" 
+                       Margin="4,0"
+                       Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}">
+            </TextBlock>
+        </Grid>
+    </DataTemplate>
+
+    <Style TargetType="{x:Type ListBoxItem}" x:Key="ContainerStyle">
+        
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="ContentTemplate" Value="{StaticResource ItemTemplate}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="ContentTemplate" Value="{StaticResource SelectedTemplate}" />
+            </Trigger>
+        </Style.Triggers>
+        
+    </Style>
+
+
+
+    <!-- DsxFilterPopup -->
+    <Style TargetType="{x:Type local:DsxFilterPopup}">
+        <Setter Property="Focusable"        Value="False"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness"  Value="0"/>
+        <Setter Property="Padding"          Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid ClipToBounds="False">
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <Themes:ButtonChrome    x:Name="Chrome" 
+                                                    Style               ="{x:Null}"
+                                                    Background          ="{x:Null}"
+                                                    BorderBrush         ="{x:Null}"
+                                                    SnapsToDevicePixels ="true">
+                                <Grid  Margin="-3,-3,3,-3"
+                                       Background  ="{Binding  Path=Column, 
+                                                               RelativeSource={RelativeSource TemplatedParent},   
+                                                               Converter={StaticResource dsxFilterStyleConverter},   
+                                                               ConverterParameter=CriteriaBackground}">
+                                    
+                                    <TextBlock  Padding="3,0,3,0"
+                                                VerticalAlignment="Top"
+                                                Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                                                Text        ="{Binding Path=Column.FilterCriteriaSign, 
+                                                                       Mode=OneWay,
+                                                                       RelativeSource={RelativeSource TemplatedParent}}">
+                                    </TextBlock>
+                                </Grid>
+                            </Themes:ButtonChrome>
+                            
+                        </StackPanel>
+
+                        <Popup x:Name="PART_Popup"
+                               StaysOpen          ="False" 
+                               Focusable          ="False"
+                               IsOpen             ="{Binding Path=IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                               PlacementTarget    ="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DsxFilterTextCell}}}"  
+                               Placement          ="Bottom" 
+                               AllowsTransparency ="True" 
+                               VerticalOffset     ="5"
+                               HorizontalOffset   ="-4"
+                               PopupAnimation     ="Scroll" 
+                               SnapsToDevicePixels="True">
+                            <Grid>
+                                <Border CornerRadius="3" 
+                                        Background      ="{Binding Path=Column, 
+                                                                   RelativeSource={RelativeSource TemplatedParent},   
+                                                                   Converter={StaticResource dsxFilterStyleConverter},   
+                                                                   ConverterParameter=CriteriaBackground}"/>
+                                
+                                    <ListBox x:Name="listCriterias"
+                                             Margin         ="3"
+                                             BorderThickness="0"
+                                             Focusable      ="False"
+                                             Background     ="Transparent"
+                                             SelectionMode  ="Single"
+                                             
+                                             ItemContainerStyle="{StaticResource ContainerStyle}"
+                                             
+                                             ItemsSource    ="{Binding Source={StaticResource dsxEFilterCriteria}}"
+                                             SelectedValue  ="{Binding Path=Column.FilterCriteria, 
+                                                                       Mode=TwoWay,
+                                                                       RelativeSource={RelativeSource TemplatedParent}}">
+                                </ListBox>
+                                
+                                <Border CornerRadius    ="{Binding Path=Column, 
+                                                                   RelativeSource={RelativeSource TemplatedParent},   
+                                                                   Converter={StaticResource dsxFilterStyleConverter},   
+                                                                   ConverterParameter=CornerRadius}"
+                                        BorderThickness ="3"
+                                        BorderBrush     ="{Binding Path=Column, 
+                                                                   RelativeSource={RelativeSource TemplatedParent},   
+                                                                   Converter={StaticResource dsxFilterStyleConverter},   
+                                                                   ConverterParameter=BorderBrush}">
+                                </Border>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

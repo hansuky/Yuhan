@@ -1,0 +1,136 @@
+﻿<ResourceDictionary 
+    xmlns       ="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x     ="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:local="clr-namespace:Yuhan.WPF.DsxGridCtrl">
+    
+    <ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- dsxHorizontalSliderThumbStyle -->
+    <Style x:Key="dsxHorizontalSliderThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Width" Value="1"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <StackPanel ClipToBounds="False">
+                        <Border CornerRadius="3"
+                                Margin="-2,0,-2,0"
+                                Height="14"
+                                Opacity="0.5"
+                                Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+                                HorizontalAlignment="Stretch" >
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- dsxCellSliderStyle -->
+    <Style x:Key="dsxCellSliderStyle" TargetType="{x:Type Slider}">
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <!--<Setter Property="Foreground" Value="#FFC4C4C4"/>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Slider}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            Margin="1,0,-1,0"
+						    BorderThickness="0" 
+						    Background="{TemplateBinding Background}" 
+						    SnapsToDevicePixels="true">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="TrackBackground" 
+                                    BorderThickness="0" 
+                                    Visibility="Hidden"  
+                                    Height="4.0" 
+                                    Margin="0,0" Grid.Row="1" VerticalAlignment="center">
+                                <Canvas Margin="-6,-1">
+                                    <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" 
+                                                                            Height="4.0" 
+                                                                            Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" 
+                                                                            StrokeThickness="1.0" Visibility="Hidden"/>
+                                </Canvas>
+                            </Border>
+                            <Track x:Name="PART_Track" 
+                                   FocusVisualStyle="{x:Null}"
+                                   Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Visibility="Hidden"  Command="{x:Static Slider.DecreaseLarge}" Style="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" />
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Visibility="Hidden"  Command="{x:Static Slider.IncreaseLarge}" Style="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Style="{StaticResource dsxHorizontalSliderThumbStyle}"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- DsxCellProgressBar -->
+    <Style TargetType="{x:Type local:DsxCellSlider}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:DsxCellSlider}">
+                    <Grid>
+                       <Border     x:Name="PART_Track" 
+                                    CornerRadius="2" 
+                                    Background="Transparent"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1" />
+                        
+                        <Border     x:Name="PART_Indicator" 
+                                    CornerRadius="3" 
+                                    Background="{TemplateBinding ContentBackground}"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="1" 
+                                    HorizontalAlignment="Left" />
+                       
+                        <TextBlock  Text="{TemplateBinding Text}"
+                                    Padding="0,0,2,0" 
+                                    FontSize="10"
+                                    FontWeight="Bold"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    HorizontalAlignment="Stretch"
+                                    TextAlignment="{TemplateBinding TextAlignment}">
+                        </TextBlock>
+                        
+                        <Slider     x:Name="PART_Slider"
+                                    Style="{StaticResource dsxCellSliderStyle}"
+                                    Margin="0"
+                                    IsSnapToTickEnabled="True"
+                                    TickPlacement="None"
+                                    Minimum="{TemplateBinding Minimum}"
+                                    Maximum="{TemplateBinding Maximum}"
+                                    SmallChange="{TemplateBinding SmallChange}"
+                                    Value="{Binding Path=Value, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Foreground="Transparent"
+                                    Background="Transparent">
+                        </Slider>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

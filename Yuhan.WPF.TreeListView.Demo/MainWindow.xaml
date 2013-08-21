@@ -5,7 +5,7 @@
 		x:Class="Yuhan.WPF.TreeListView.Demo.MainWindow"
 		Title="TreeListView" Width="640" Height="480">
     <Window.Resources>
-
+        <l:LevelToIndentConverter x:Key="LevelToIndentConverter" />
         <Style x:Key="ExpandCollapseToggleStyle"
            TargetType="{x:Type ToggleButton}">
             <Setter Property="Focusable"
@@ -56,10 +56,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <l:LevelToIndentConverter x:Key="LevelToIndentConverter"/>
-
-        <DataTemplate x:Key="CellTemplate_Name">
+        <DataTemplate x:Key="CellTemplate_Name" >
             <DockPanel>
                 <ToggleButton x:Name="Expander" 
                       Style="{StaticResource ExpandCollapseToggleStyle}" 
@@ -73,7 +70,7 @@
                                  RelativeSource={RelativeSource 
                                                  AncestorType=
                                                   {x:Type l:TreeListViewItem}}}"
-                      ClickMode="Press"/>
+                      ClickMode="Press" />
                 <TextBlock Text="{Binding Name}"/>
             </DockPanel>
             <DataTemplate.Triggers>
@@ -87,121 +84,19 @@
                 </DataTrigger>
             </DataTemplate.Triggers>
         </DataTemplate>
-
-
-        <GridViewColumnCollection x:Key="gvcc">
-            <GridViewColumn Header="Name"  
-                      CellTemplate="{StaticResource CellTemplate_Name}" />
-            <GridViewColumn Header="IsAbstract" 
-                      DisplayMemberBinding="{Binding IsAbstract}" Width="60" />
-            <GridViewColumn Header="Namespace" 
-                      DisplayMemberBinding="{Binding Namespace}" />
-        </GridViewColumnCollection>
-
-
-        <Style TargetType="{x:Type l:TreeListViewItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type l:TreeListViewItem}">
-                        <StackPanel>
-                            <Border Name="Bd"
-                      Background="{TemplateBinding Background}"
-                      BorderBrush="{TemplateBinding BorderBrush}"
-                      BorderThickness="{TemplateBinding BorderThickness}"
-                      Padding="{TemplateBinding Padding}">
-                                <GridViewRowPresenter x:Name="PART_Header" 
-                                      Content="{TemplateBinding Header}" 
-                                      Columns="{StaticResource gvcc}" />
-                            </Border>
-                            <ItemsPresenter x:Name="ItemsHost" />
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsExpanded"
-                       Value="false">
-                                <Setter TargetName="ItemsHost"
-                        Property="Visibility"
-                        Value="Collapsed"/>
-                            </Trigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="HasHeader"
-                             Value="false"/>
-                                    <Condition Property="Width"
-                             Value="Auto"/>
-                                </MultiTrigger.Conditions>
-                                <Setter TargetName="PART_Header"
-                        Property="MinWidth"
-                        Value="75"/>
-                            </MultiTrigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="HasHeader"
-                             Value="false"/>
-                                    <Condition Property="Height"
-                             Value="Auto"/>
-                                </MultiTrigger.Conditions>
-                                <Setter TargetName="PART_Header"
-                        Property="MinHeight"
-                        Value="19"/>
-                            </MultiTrigger>
-                            <Trigger Property="IsSelected"
-                       Value="true">
-                                <Setter TargetName="Bd"
-                        Property="Background"
-                        Value="{DynamicResource 
-                          {x:Static SystemColors.HighlightBrushKey}}"/>
-                                <Setter Property="Foreground"
-                        Value="{DynamicResource 
-                          {x:Static SystemColors.HighlightTextBrushKey}}"/>
-                            </Trigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="IsSelected"
-                             Value="true"/>
-                                    <Condition Property="IsSelectionActive"
-                             Value="false"/>
-                                </MultiTrigger.Conditions>
-                                <Setter TargetName="Bd"
-                        Property="Background"
-                        Value="{DynamicResource 
-                          {x:Static SystemColors.ControlBrushKey}}"/>
-                                <Setter Property="Foreground"
-                        Value="{DynamicResource 
-                          {x:Static SystemColors.ControlTextBrushKey}}"/>
-                            </MultiTrigger>
-                            <Trigger Property="IsEnabled"
-                       Value="false">
-                                <Setter Property="Foreground"
-                        Value="{DynamicResource 
-                          {x:Static SystemColors.GrayTextBrushKey}}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-        <Style TargetType="{x:Type l:TreeListView}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type l:TreeListView}">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
-                            <DockPanel>
-                                <GridViewHeaderRowPresenter Columns="{StaticResource gvcc}"
-                                            DockPanel.Dock="Top"/>
-                                <ItemsPresenter/>
-                            </DockPanel>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
     </Window.Resources>
 
     <l:TreeListView>
+        <l:TreeListView.ColumnCollection>
+            <l:TreeGridViewColumn 
+                Header="Name"  Expandable="True"
+                CellTemplate="{StaticResource CellTemplate_Name}" />
+            <l:TreeGridViewColumn  Header="IsAbstract" Expandable="False"
+                      DisplayMemberBinding="{Binding IsAbstract}" Width="60" >
+            </l:TreeGridViewColumn>
+            <l:TreeGridViewColumn  Header="Namespace" Expandable="True"
+                      DisplayMemberBinding="{Binding Namespace}" />
+        </l:TreeListView.ColumnCollection>
 
         <l:TreeListViewItem>
             <l:TreeListViewItem.Header>

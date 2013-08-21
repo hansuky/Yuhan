@@ -1,0 +1,152 @@
+﻿<CustomWindow:EssentialWindow x:Class="Yuhan.WPF.MessageBoxWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:CustomWindow="clr-namespace:Yuhan.WPF.CustomWindow;assembly=Yuhan.WPF.CustomWindow"
+    xmlns:MessageBox="clr-namespace:Yuhan.WPF.MessageBox"
+    xmlns:Converters="clr-namespace:Yuhan.WPF.Converters;assembly=Yuhan.WPF"
+    AllowsTransparency="True" Background="Transparent" Title="EssentialWindow"
+    MinWidth="370" MaxWidth="370"
+    ResizeMode="NoResize" ShowActivated="True" MinimizeButtonState="None" MaximizeButtonState="None" 
+                              SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <CustomWindow:EssentialWindow.Resources>
+        <ResourceDictionary>
+            <MessageBox:MessageBoxViewModel x:Key="ViewModel" />
+            <Converters:NullToCollapseConverter x:Key="NullToCollapseConverter" />
+            <MessageBox:MessageEnumToImageConverter x:Key="MessageEnumToImageConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Yuhan.WPF;component/Resources/Controls.Shared.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Yuhan.WPF;component/Resources/Controls.ScrollViewer.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Yuhan.WPF.MessageBox;component/MessageBoxButtons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </CustomWindow:EssentialWindow.Resources>
+    <CustomWindow:EssentialWindow.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <!--Heading Start-->
+                    <DoubleAnimation To="0" Duration="0:0:0:0"
+                                 Storyboard.TargetName="tbInstructionHeading"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <DoubleAnimation To="1" Duration="0:0:0.2"
+                                 Storyboard.TargetName="tbInstructionHeading"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <DoubleAnimation To="0" From="50" Duration="0:0:1"
+                                 Storyboard.TargetName="tbInstructionHeadingTransForm"
+                                 Storyboard.TargetProperty="X" AutoReverse="False">
+                        <DoubleAnimation.EasingFunction>
+                            <PowerEase EasingMode="EaseOut" Power="9" />
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <!--Heading End-->  
+                    
+                    <!--Heading Icon Start-->
+                    <DoubleAnimation To="0" Duration="0:0:0:0"
+                                 Storyboard.TargetName="imgInstructionIcon"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <DoubleAnimation To="1" Duration="0:0:0:1"
+                                 Storyboard.TargetName="imgInstructionIcon"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <!--Heading Icon End-->
+                    
+                    <!--Description Start-->
+                    <DoubleAnimation To="0" Duration="0:0:0:0"
+                                 Storyboard.TargetName="tbInstructionText"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <DoubleAnimation To="1" Duration="0:0:0:1" BeginTime="0:0:0:0.5"
+                                 Storyboard.TargetName="tbInstructionText"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <DoubleAnimation To="0" From="15" Duration="0:0:1" BeginTime="0:0:0:0.5"
+                                 Storyboard.TargetName="tbInstructionTextTransForm"
+                                 Storyboard.TargetProperty="Y" AutoReverse="False">
+                        <DoubleAnimation.EasingFunction>
+                            <PowerEase EasingMode="EaseOut" Power="9" />
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <!--Description End-->
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </CustomWindow:EssentialWindow.Triggers>
+    <Grid DataContext="{Binding Source={StaticResource ViewModel}}" x:Name="LayoutRoot">
+        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="#3BB2EA">
+        <Border BorderBrush="#55FFFFFF" BorderThickness="1" CornerRadius="5">
+            <DockPanel Background="#EFF7FA">
+                <Border MouseMove="Header_MouseMove" DockPanel.Dock="Top" Background="{DynamicResource BlueLightBrush}">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <TextBlock Text="{Binding Path=Caption, Mode=TwoWay}" Foreground="White" VerticalAlignment="Center" Height="Auto" FontFamily="Arial"  TextTrimming="WordEllipsis" TextWrapping="NoWrap" Padding="4,6,0,6"></TextBlock>
+                        <Border Name="WindowButtonsPlaceholder" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                    Margin="0,-1,10,0" />
+                    </Grid>
+                </Border>
+                <Border x:Name="borderCustomDialog" Background="#3BB2EA" CornerRadius="0,0,0,0" Padding="0,0,0,0">
+                    <StackPanel Margin="0,0,0,0" Width="Auto" Height="Auto">
+                        <Grid Background="White" Width="Auto" Height="Auto" Margin="0,-1,0,0">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="21*"/>
+                                <ColumnDefinition Width="59*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                                <Image HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="imgInstructionIcon" VerticalAlignment="Top" Width="Auto" Height="Auto" Source="{Binding Path=HeaderIcon, Converter={StaticResource MessageEnumToImageConverter}}" Grid.ColumnSpan="1" Grid.Row="0"/>
+                                <TextBlock HorizontalAlignment="Stretch" Margin="0,15.651" x:Name="tbInstructionHeading" VerticalAlignment="Center" Width="Auto" Text="{Binding Path=Header, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="1" FontFamily="Arial" FontSize="18" Foreground="#FF006ECD" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform x:Name="tbInstructionHeadingTransForm" X="0"/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Stretch" x:Name="tbInstructionText" Width="Auto" FontFamily="Arial" Text="{Binding Path=Description, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="1" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <TranslateTransform x:Name="tbInstructionTextTransForm" Y="5"/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+
+                                <ScrollViewer Visibility="Collapsed" Style="{DynamicResource ScrollViewer}" HorizontalAlignment="Stretch" x:Name="tbAdditionalDetailsText" MaxHeight="150" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" Height="Auto" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="1">
+                                    <TextBlock VerticalAlignment="Stretch" Height="Auto" Text="{Binding Path=Details, Mode=TwoWay}" TextWrapping="Wrap" Margin="0,10,0,41" FontFamily="Arial" />
+                                </ScrollViewer>
+                                <Border Margin="0,10,0,0" VerticalAlignment="Top" Height="Auto" Background="#FFECECEC" BorderBrush="#FFC9C9C9" BorderThickness="0,1,0,1" Padding="8,0,0,0" Grid.ColumnSpan="3" Grid.Row="3">
+                                <DockPanel Margin="0,8,0,8" Width="Auto" Height="Auto" Background="{x:Null}">
+                                        <Expander ClipToBounds="False" Visibility="{Binding Path=Details, Converter={StaticResource NullToCollapseConverter}}" HorizontalAlignment="Left" x:Name="expAdditionalDetails" VerticalAlignment="Center" FontFamily="Arial" Header="See Details" Collapsed="expAdditionalDetails_Collapsed" Expanded="expAdditionalDetails_Expanded">
+                                            <Grid Margin="0,0,0,0" Width="Auto"/>
+                                        </Expander>
+                                        <Button x:Name="btnCancel" Width="60" Height="Auto" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,8,0" VerticalAlignment="Center" DockPanel.Dock="Right" Style="{DynamicResource RedButtonStyle}" Click="btn_Click" />
+
+                                        <Button x:Name="btnNo" Width="60" Height="Auto" Content="No" HorizontalAlignment="Right" Margin="0,0,8,0" VerticalAlignment="Center" DockPanel.Dock="Right"  Style="{DynamicResource YellowButtonStyle}" Click="btn_Click"/>
+
+                                        <Button x:Name="btnYes" Width="60" Height="Auto" Content="Yes" HorizontalAlignment="Right" Margin="0,0,8,0" VerticalAlignment="Center" DockPanel.Dock="Right" Style="{DynamicResource GreenButtonStyle}" Click="btn_Click"/>
+
+                                        <Button x:Name="btnOK" Width="60" Height="Auto" Content="OK" HorizontalAlignment="Right" Margin="0,0,8,0" VerticalAlignment="Center" DockPanel.Dock="Right" Style="{DynamicResource BlueButtonStyle}" Click="btn_Click"/>
+
+                                        <ProgressBar Value="{Binding Path=Percentage}" Visibility="{Binding Path=Percentage, Converter={StaticResource NullToCollapseConverter}}" HorizontalAlignment="Right" Margin="0,0,10,0" x:Name="pbDisabledButtonsProgressBar" Width="75" Height="10" DockPanel.Dock="Right" SmallChange="1"/>
+
+                                </DockPanel>
+                            </Border>
+                            <Border HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="Auto" Background="#FFECECEC" BorderBrush="#FFF4F4F4" BorderThickness="0,1,0,0" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="1">
+                                <StackPanel Height="Auto" Orientation="Horizontal">
+                                        <Image RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" x:Name="imgFooterIcon" VerticalAlignment="Center" Width="Auto" Height="Auto" Source="{Binding Path=FooterIcon, Converter={StaticResource MessageEnumToImageConverter}}">
+                                        <Image.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+                                                <SkewTransform AngleX="0" AngleY="0"/>
+                                                <RotateTransform Angle="0"/>
+                                                <TranslateTransform X="0" Y="0"/>
+                                            </TransformGroup>
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <TextBlock HorizontalAlignment="Stretch" x:Name="tbFooterText" VerticalAlignment="Center" FontFamily="Arial" Text="{Binding Path=FooterText, Mode=TwoWay}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+        </Border>
+    </Border>
+    </Grid>
+</CustomWindow:EssentialWindow>

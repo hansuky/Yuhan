@@ -1,0 +1,52 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:WPF="clr-namespace:Yuhan.WPF" 
+             x:Class="Yuhan.WPF.Controls.GaugeBar" 
+             mc:Ignorable="d" 
+             d:DesignHeight="15" d:DesignWidth="100" x:Name="Control" >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Storyboard x:Key="LoadStory" x:Name="LoadStory">
+            <DoubleAnimation x:Name="TBarLoadDAni" Duration="0:0:3" From="0"
+                             Storyboard.TargetName="TBar" Storyboard.TargetProperty="Width"
+                             To="{Binding ElementName=Control.Bar, Path=ActualWidth, Mode=OneWay}">
+                <DoubleAnimation.EasingFunction>
+                    <ExponentialEase Exponent="9" EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation BeginTime="0:0:0" From="0"
+                             Storyboard.TargetName="VBar" Storyboard.TargetProperty="Opacity"
+                             To="0" >
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseIn" ></BackEase>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation x:Name="VBarLoadDAni" BeginTime="0:0:1" Duration="0:0:1" From="0"
+                             Storyboard.TargetName="VBar" Storyboard.TargetProperty="Opacity"
+                             To="1" >
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseIn" ></BackEase>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource LoadStory}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Border BorderThickness="1" BorderBrush="#628DB6" DataContext="{Binding ElementName=Control}" x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid x:Name="Bar" HorizontalAlignment="Left">
+            <Border Background="#3B5998" x:Name="TBar" HorizontalAlignment="Left" Width="{Binding ElementName=Bar, Path=ActualWidth}"/>
+            <Border Background="#BF1307" x:Name="VBar" VerticalAlignment="Stretch" Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Right" Visibility="{Binding ShowValue, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Viewbox Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Path=Text, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Foreground="White"/>
+                </Viewbox>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>
