@@ -7,8 +7,6 @@ namespace Yuhan.WPF
 {
     public class TreeListView : TreeView
     {
-
-
         public GridViewColumnCollection ColumnCollection
         {
             get { return (GridViewColumnCollection)GetValue(ColumnCollectionProperty); }
@@ -17,8 +15,11 @@ namespace Yuhan.WPF
 
         // Using a DependencyProperty as the backing store for ColumnCollection.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColumnCollectionProperty =
-            DependencyProperty.Register("ColumnCollection", typeof(GridViewColumnCollection), typeof(TreeListView), new PropertyMetadata(new GridViewColumnCollection()));
+            DependencyProperty.Register("ColumnCollection", typeof(GridViewColumnCollection), typeof(TreeListView), new PropertyMetadata(new GridViewColumnCollection(), ColumnCollectionChanged));
 
+        private static void ColumnCollectionChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+        }
 
         protected override DependencyObject 
                            GetContainerForItemOverride()
@@ -39,6 +40,7 @@ namespace Yuhan.WPF
                 {
                     Source = new Uri("pack://application:,,,/Yuhan.WPF.TreeListView;component/Resources/TreeListView.xaml")
                 });
+            this.ColumnCollection = new GridViewColumnCollection();
         }
     }
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7EA4755E-69C6-4D2A-9BB5-9F8A83E0BC56}</ProjectGuid>
+    <ProjectGuid>{B9F2D644-7C12-417B-A13B-43573906648B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yuhan.WPF.TreeListView.Demo</RootNamespace>
-    <AssemblyName>Yuhan.WPF.TreeListView.Demo</AssemblyName>
+    <RootNamespace>Yuhan.WPF.Test</RootNamespace>
+    <AssemblyName>Yuhan.WPF.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -51,9 +51,7 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,9 +66,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Component.cs" />
-    <Compile Include="Models\Composite.cs" />
-    <Compile Include="Models\Leaf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,21 +89,6 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Yuhan.Common\Yuhan.Common.csproj">
-      <Project>{dfb82eec-411e-4ede-ab06-2333f9259cbf}</Project>
-      <Name>Yuhan.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Yuhan.WPF.TreeListView\Yuhan.WPF.TreeListView.csproj">
-      <Project>{8229625c-1246-429c-aa9e-31bf95d6bbc7}</Project>
-      <Name>Yuhan.WPF.TreeListView</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Yuhan.WPF\Yuhan.WPF.csproj">
-      <Project>{ba51331e-e146-42ab-a32f-78674f869512}</Project>
-      <Name>Yuhan.WPF</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
