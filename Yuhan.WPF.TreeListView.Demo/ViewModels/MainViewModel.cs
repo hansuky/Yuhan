@@ -77,6 +77,12 @@ namespace Yuhan.WPF.TreeListView.Demo
             composite3.Components.Add(new Leaf() { No = "3.2", Name = "Leaf2" });
             composite3.Components.Add(new Leaf() { No = "3.3", Name = "Leaf3" });
             Components.Add(composite3);
+
+            for (int i = 0; i < 100; i++)
+                Components.Add(new Composite()
+                {
+                    No = String.Format("[{0}]", i)
+                });
         }
     }
 }

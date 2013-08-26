@@ -243,13 +243,15 @@
                 <ControlTemplate TargetType="{x:Type local:TreeListView}">
                     <Border BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}">
-                        <DockPanel>
-                            <GridViewHeaderRowPresenter Columns="{TemplateBinding ColumnCollection}"
-                                            DockPanel.Dock="Top"/>
-                            <ScrollViewer x:Name="ScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Background="{x:Null}" BorderBrush="Transparent" BorderThickness="0" IsTabStop="False" >
-                                <ItemsPresenter/>
-                            </ScrollViewer>
-                        </DockPanel>
+                        <ScrollViewer VerticalScrollBarVisibility="Disabled" Background="{x:Null}" BorderBrush="Transparent" BorderThickness="0" IsTabStop="False">
+                            <DockPanel>
+                                <GridViewHeaderRowPresenter Columns="{TemplateBinding ColumnCollection}"
+                                                DockPanel.Dock="Top"/>
+                                <ScrollViewer x:Name="ScrollViewer" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Background="{x:Null}" BorderBrush="Transparent" BorderThickness="0" IsTabStop="False" >
+                                    <ItemsPresenter/>
+                                </ScrollViewer>
+                            </DockPanel>
+                        </ScrollViewer>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

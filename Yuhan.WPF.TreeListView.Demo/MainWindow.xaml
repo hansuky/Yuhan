@@ -7,7 +7,6 @@
 		Title="TreeListView" Width="640" Height="480">
     <Window.Resources>
         <local:MainViewModel x:Key="ViewModel" />
-        <l:LevelToIndentConverter x:Key="LevelToIndentConverter" />
     </Window.Resources>
 
     <Grid DataContext="{Binding Source={StaticResource ViewModel}}">

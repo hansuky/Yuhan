@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Controls\BindableScrollBar.cs" />
     <Compile Include="Converters\DecimalToQuantityConverter.cs" />
     <Compile Include="Converters\NullToCollapseConverter.cs" />
     <Compile Include="Converters\StringToBindingConverter.cs" />
