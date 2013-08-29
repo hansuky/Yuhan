@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86ECBDD7-735D-4182-BEBC-935F61C91DD0}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{6459EA71-C938-423D-BD2E-E5EC97A70113}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yuhan.WPF.MessageBox</RootNamespace>
-    <AssemblyName>Yuhan.WPF.MessageBox</AssemblyName>
+    <RootNamespace>Yuhan.WPF.VisualContainer.Demo</RootNamespace>
+    <AssemblyName>Yuhan.WPF.VisualContainer.Demo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,11 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,24 +49,27 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MessageBoxButtons.xaml">
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MessageBoxWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessageBoxDialog.cs" />
-    <Compile Include="MessageBoxEnums.cs" />
-    <Compile Include="MessageBoxViewModel.cs" />
-    <Compile Include="MessageBoxWindow.xaml.cs">
-      <DependentUpon>MessageBoxWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MessageEnumToImageConverter.cs" />
-    <Compile Include="ProgressMessageViewModel.cs" />
+    <Compile Include="Models\Canvas\CanvasItem.cs" />
+    <Compile Include="Models\Grid\CellItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,25 +94,21 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Information.png" />
-    <Resource Include="Images\Question.png" />
-    <Resource Include="Images\Shield.png" />
-    <Resource Include="Images\Stop.png" />
-    <Resource Include="Images\Warning.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Yuhan.Common\Yuhan.Common.csproj">
       <Project>{dfb82eec-411e-4ede-ab06-2333f9259cbf}</Project>
       <Name>Yuhan.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuhan.WPF.CustomWindow\Yuhan.WPF.CustomWindow.csproj">
-      <Project>{2e31329f-4972-4fc9-9399-b03d2853fd58}</Project>
-      <Name>Yuhan.WPF.CustomWindow</Name>
+    <ProjectReference Include="..\Yuhan.WPF.VisualContainer\Yuhan.WPF.VisualContainer.csproj">
+      <Project>{82d32530-19f1-4b9e-9722-22fbfa41d73e}</Project>
+      <Name>Yuhan.WPF.VisualContainer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuhan.WPF\Yuhan.WPF.csproj">
       <Project>{ba51331e-e146-42ab-a32f-78674f869512}</Project>
       <Name>Yuhan.WPF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\images.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

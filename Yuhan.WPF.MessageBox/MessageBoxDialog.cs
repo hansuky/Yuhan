@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using Yuhan.Common.Helpers;
 
 using Yuhan.WPF.MessageBox;
 
@@ -149,6 +150,74 @@ namespace Yuhan.WPF
         public static MessageBoxWindowResult Show(MessageBoxViewModel viewModel)
         {
             return MessageBoxWindow.Show(viewModel);
+        }
+
+        /// <summary>
+        //     예외 메시지 상자를 표시합니다.
+        /// </summary>
+        /// <param name="ex">표시할 예외</param>
+        public static MessageBoxWindowResult Show(Exception ex)
+        {
+            return Show(GetExceptionViewModel(ex));
+        }
+
+        /// <summary>
+        //     유효성 검사 결과의 메시지 상자를 표시합니다.
+        /// </summary>
+        /// <param name="ex">표시할 유효성 검사결과의 열거형 리스트입니다.</param>
+        public static MessageBoxWindowResult Show(IEnumerable<RuleViolation> ruleViolations)
+        {
+            RuleViolation rule = ruleViolations.First();
+            MessageBoxViewModel viewModel = new MessageBoxViewModel()
+            {
+                Caption = "Error",
+                Header = String.Format("{0}이(가) 유효하지 않습니다.", rule.PropertyName),
+                HeaderIcon = MessageBoxWindowIcons.Warning,
+                Description = rule.ErrorMessage
+            };
+            foreach (var item in ruleViolations)
+            {
+                viewModel.Details += String.Format("[{0}] : {1}\n", rule.PropertyName, rule.ErrorMessage);
+            }
+            return Show(viewModel);
+        }
+
+        /// <summary>
+        //     유효성 검사 결과의 메시지 상자를 표시합니다.
+        /// </summary>
+        /// <param name="ex">표시할 유효성 검사 결과 개체</param>
+        public static MessageBoxWindowResult Show(RuleViolation ruleViolation)
+        {
+            RuleViolation rule = ruleViolation;
+            MessageBoxViewModel viewModel = new MessageBoxViewModel()
+            {
+                Caption = "Error",
+                Header = String.Format("{0}이(가) 유효하지 않습니다.", rule.PropertyName),
+                HeaderIcon = MessageBoxWindowIcons.Warning,
+                Description = rule.ErrorMessage
+            };
+
+            return Show(viewModel);
+        }
+
+        /// <summary>
+        /// Exception을 메세지 박스에 출력 가능한 뷰모델로 변환합니다.
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        private static MessageBoxViewModel GetExceptionViewModel(Exception ex)
+        {
+            return
+                new MessageBoxViewModel()
+                {
+                    Caption = "Error",
+                    HeaderIcon = MessageBoxWindowIcons.Warning,
+                    Header = ex.Message,
+                    Description = ex.Source,
+                    Details = String.Format("{0}\n\n{1}", ex.StackTrace, ex.TargetSite.ToString()),
+                    FooterIcon = MessageBoxWindowIcons.Shield,
+                    FooterText = ex.TargetSite.Module.Name
+                };
         }
     }
 }

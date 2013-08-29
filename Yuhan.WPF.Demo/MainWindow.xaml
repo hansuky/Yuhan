@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Border Grid.RowSpan="2" Grid.ColumnSpan="3" BorderBrush="Black" Padding="5" BorderThickness="1" CornerRadius="2">
 
-        <vc:VisualContainer x:Name="VisualContainer"
+        <vc:VisualGrid x:Name="VisualContainer"
                             ColumnCount="10" 
                             RowCount="10" 
                             ItemsSource="{Binding Path=Containers}" 

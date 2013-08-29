@@ -91,6 +91,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yuhan.Common\Yuhan.Common.csproj">
+      <Project>{dfb82eec-411e-4ede-ab06-2333f9259cbf}</Project>
+      <Name>Yuhan.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yuhan.WPF.CustomWindow\Yuhan.WPF.CustomWindow.csproj">
       <Project>{2e31329f-4972-4fc9-9399-b03d2853fd58}</Project>
       <Name>Yuhan.WPF.CustomWindow</Name>

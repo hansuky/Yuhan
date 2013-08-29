@@ -3,10 +3,10 @@
                     xmlns:vc="clr-namespace:Yuhan.WPF.VisualContainer"
                     xmlns:local="clr-namespace:Yuhan.WPF.Helpers;assembly=Yuhan.WPF">
     
-    <Style TargetType="{x:Type vc:VisualContainer}">
+    <Style TargetType="{x:Type vc:VisualGrid}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type vc:VisualContainer}">
+                <ControlTemplate TargetType="{x:Type vc:VisualGrid}">
                     <ItemsPresenter />
                 </ControlTemplate>
             </Setter.Value>
@@ -31,11 +31,11 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <Grid local:GridHelpers.ColumnCount="{Binding ColumnCount, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualContainer}}}"
+                    <Grid local:GridHelpers.ColumnCount="{Binding ColumnCount, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualGrid}}}"
                           local:GridHelpers.ColumnGridUnitType="Star"
-                          local:GridHelpers.RowCount="{Binding RowCount, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualContainer}}}"
+                          local:GridHelpers.RowCount="{Binding RowCount, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualGrid}}}"
                           local:GridHelpers.RowGridUnitType="Star"
-                          ShowGridLines="{Binding ShowGridLines, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualContainer}}}" />
+                          ShowGridLines="{Binding ShowGridLines, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualGrid}}}" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

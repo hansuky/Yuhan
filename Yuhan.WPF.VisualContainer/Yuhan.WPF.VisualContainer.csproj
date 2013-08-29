@@ -38,6 +38,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,7 +54,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VisualContainer.cs" />
+    <Compile Include="VisualCanvas.cs" />
+    <Compile Include="VisualCanvasItem.cs" />
+    <Compile Include="VisualGrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -80,6 +83,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Yuhan.WPF.TreeListView\Yuhan.WPF.TreeListView.csproj">
+      <Project>{8229625C-1246-429C-AA9E-31BF95D6BBC7}</Project>
+      <Name>Yuhan.WPF.TreeListView</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Yuhan.WPF\Yuhan.WPF.csproj">
       <Project>{ba51331e-e146-42ab-a32f-78674f869512}</Project>
       <Name>Yuhan.WPF</Name>
@@ -90,9 +97,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\VisualContainer.xaml">
+    <Page Include="Resources\VisualGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\VisualCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
