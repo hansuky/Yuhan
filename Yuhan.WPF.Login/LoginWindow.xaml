@@ -1,0 +1,121 @@
+﻿<CustomWindow:EssentialWindow x:Class="Yuhan.WPF.Login.LoginWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:CustomWindow="clr-namespace:Yuhan.WPF.CustomWindow;assembly=Yuhan.WPF.CustomWindow"
+             xmlns:ViewModel="clr-namespace:Yuhan.WPF.Login.ViewModels"
+             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" 
+             xmlns:Metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:Helper="clr-namespace:Yuhan.WPF.Helpers;assembly=Yuhan.WPF"
+             mc:Ignorable="d" AllowsTransparency="True" Background="Transparent"
+             ResizeMode="NoResize" ShowActivated="True" MinimizeButtonState="None" MaximizeButtonState="None" 
+             SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <!--d:DesignHeight="300" d:DesignWidth="300"-->
+    <CustomWindow:EssentialWindow.Resources>
+        <ResourceDictionary>
+            <ViewModel:LoginViewModel x:Key="ViewModel" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Yuhan.WPF.MessageBox;component/MessageBoxButtons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </CustomWindow:EssentialWindow.Resources>
+    <CustomWindow:EssentialWindow.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation To="0" Duration="0:0:0:0"
+                                 Storyboard.TargetName="LayoutRoot"
+                                 Storyboard.TargetProperty="Opacity"/>
+                    <DoubleAnimation To="1" Duration="0:0:1"
+                                 Storyboard.TargetName="LayoutRoot"
+                                 Storyboard.TargetProperty="Opacity" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </CustomWindow:EssentialWindow.Triggers>
+    <Metro:MetroContentControl>
+        <Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource ViewModel}}" KeyDown="LayoutRoot_KeyDown">
+            <Grid x:Name="Back">
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="-90" BlurRadius="10" Opacity="0.25"/>
+                </Grid.Effect>
+                <Border Background="Black" CornerRadius="3" Opacity="0.15"/>
+                <Border CornerRadius="2" Margin="1" Background="White"/>
+            </Grid>
+            <DockPanel>
+                <Border DockPanel.Dock="Top">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#99A3C1" Offset="0" />
+                            <GradientStop Color="#6F7FAE" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                        <TextBlock Text="Log in" Foreground="White" VerticalAlignment="Center" Height="Auto" FontFamily="Arial"  TextTrimming="WordEllipsis" TextWrapping="NoWrap" Padding="4,6,0,6"></TextBlock>
+                        <Border Name="WindowButtonsPlaceholder" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                        Margin="0,-1,10,0" />
+                    </Grid>
+                </Border>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <Grid x:Name="Splash" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" >
+                        <Grid x:Name="Content_Area" Margin="12" HorizontalAlignment="Stretch" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="Image" Source="/Yuhan.WPF.Login;component/Resources/Image.png" Stretch="None"/>
+                            <StackPanel Grid.Row="2">
+                                <TextBlock />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Vertical" Margin="12">
+                                        <ComboBox Margin="2" ItemsSource="{Binding Path=Categories, Mode=OneWay}" SelectedItem="{Binding Path=SelectedCategory}" SelectedIndex="0" />
+                                        <TextBox TabIndex="1" x:Name="TextBox_UserId" MaxWidth="300"
+                                            Metro:TextboxHelper.ClearTextButton="True"
+                                            Metro:TextboxHelper.Watermark="아이디를 입력하세요." 
+                                            Margin="2" 
+                                            KeyDown="TextBox_UserId_KeyDown" GotFocus="Text_GotFocus"
+                                            >
+                                            <TextBox.Text>
+                                                <Binding Path="UserId" Mode="TwoWay"
+                                                         NotifyOnSourceUpdated="True"
+                                                         NotifyOnValidationError="True" UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <ExceptionValidationRule></ExceptionValidationRule>
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </TextBox.Text>
+                                        </TextBox>
+                                        <PasswordBox Margin="2" TabIndex="2" x:Name="PasswordBox_UserPassword" MaxWidth="300"
+                                                     Metro:TextboxHelper.ClearTextButton="True"
+                                                     Metro:TextboxHelper.Watermark="비밀번호를 입력하세요." 
+                                                     Helper:PasswordHelper.Attach="True" 
+                                                     Helper:PasswordHelper.Password="{Binding Path=UserPassword, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" KeyDown="PasswordBox_UserPassword_KeyDown"/>
+                                    </StackPanel>
+                                    <Button TabIndex="3" Command="{Binding LoginCommand}" Grid.Column="1" Margin="12" Content="로그인" Style="{DynamicResource BlueButtonStyle}" />
+                                </Grid>
+                                <Expander Header="Details" x:Name="Details_Expander">
+                                    <StackPanel DataContext="{Binding Path=ProcessStatment.InnerStatement}">
+                                        <TextBlock x:Name="SubInfo" TextWrapping="Wrap" Text="Smart iMES" Margin="12,12,12,0" Foreground="#FFCD0000"/>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                            <DockPanel x:Name="Footer" Grid.Row="3" Margin="12">
+                                <TextBlock x:Name="Footer_Text" TextWrapping="Wrap" Text="Copyright © " FontSize="10" Opacity="0.5" Foreground="#FF2D2D2D" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <Image Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="Logotype" Source="/Yuhan.WPF.Login;component/Resources/company_logo.png" Stretch="Uniform" />
+                                <TextBlock TextWrapping="Wrap" Text="Since 2004 " FontSize="10" Opacity="0.5" Foreground="#FF2D2D2D" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <Button x:Name="BtnClose" HorizontalAlignment="Stretch" Content="Close" BorderBrush="#FF700000"  Style="{DynamicResource RedButtonStyle}" Click="BtnClose_Click"  />
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+                </DockPanel>
+            </DockPanel>
+        </Grid>
+    </Metro:MetroContentControl>
+</CustomWindow:EssentialWindow>
