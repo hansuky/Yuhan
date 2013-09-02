@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Yuhan.WPF.VisualContainer
 {
     //public class VisualCanvasItem : ListBoxItem
-    public class VisualCanvasItem : Button
+    public class VisualCanvasItem : ListBoxItem
     {
         public Boolean IsDrawing
         {
@@ -47,8 +48,9 @@ namespace Yuhan.WPF.VisualContainer
             this.Resources.MergedDictionaries.Add(
                 new ResourceDictionary()
                 {
-                    Source = new Uri("pack://application:,,,/Yuhan.WPF.VisualContainer;component/Resources/VisualCanvas.xaml")
+                    Source = new Uri("pack://application:,,,/Yuhan.WPF.VisualContainer;component/Resources/VisualCanvasItem.xaml")
                 });
+            this.Background = new SolidColorBrush(Colors.Blue);
         }
     }
 }

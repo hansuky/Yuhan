@@ -4,27 +4,6 @@
                     xmlns:local="clr-namespace:Yuhan.WPF.Helpers;assembly=Yuhan.WPF">
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
-    <Style TargetType="{x:Type vc:VisualCanvasItem}" >
-        <Setter Property="Width" Value="{Binding Path=Width, Mode=TwoWay}" />
-        <Setter Property="Height" Value="{Binding Path=Height, Mode=TwoWay}" />
-        <Setter Property="Background" Value="Red" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}" Background="Black">
-                        <Button Margin="0" Opacity="0.7"
-                                Visibility="{Binding IsDrawn, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type vc:VisualCanvasItem}}}">
-                            <ContentPresenter />
-                        </Button>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <Style TargetType="{x:Type vc:VisualCanvas}">
         <Setter Property="Template">
             <Setter.Value>
