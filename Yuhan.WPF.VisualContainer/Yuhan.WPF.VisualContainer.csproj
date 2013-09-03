@@ -54,6 +54,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IShapeContainer.cs" />
     <Compile Include="VisualCanvas.cs" />
     <Compile Include="VisualCanvasItem.cs" />
     <Compile Include="VisualGrid.cs" />
@@ -83,17 +84,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Yuhan.WPF.TreeListView\Yuhan.WPF.TreeListView.csproj">
-      <Project>{8229625C-1246-429C-AA9E-31BF95D6BBC7}</Project>
-      <Name>Yuhan.WPF.TreeListView</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Yuhan.WPF\Yuhan.WPF.csproj">
       <Project>{ba51331e-e146-42ab-a32f-78674f869512}</Project>
       <Name>Yuhan.WPF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Yuhan.WPF.MenuListBox\Yuhan.WPF.MenuListBox.csproj">
-      <Project>{8972a52c-b69b-4f2b-ae96-bf77cf08afbb}</Project>
-      <Name>Yuhan.WPF.MenuListBox</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -193,9 +193,20 @@ namespace Yuhan.WPF.VisualContainer
 
         private Boolean IsDragStart { get; set; }
         private Object NewItem { get; set; }
+        private VisualCanvasItem newCanvasItem;
         private VisualCanvasItem NewCanvasItem
         {
-            get { return this.ItemContainerGenerator.ContainerFromItem(NewItem) as VisualCanvasItem; }
+            get
+            {
+                if (NewItem != null)
+                    return this.ItemContainerGenerator.ContainerFromItem(NewItem) as VisualCanvasItem;
+                else
+                    return newCanvasItem;
+            }
+            set
+            {
+                newCanvasItem = value;
+            }
         }
         private Point StartMousePoint { get; set; }
         private Point CurrentMousePoint { get; set; }
@@ -234,7 +245,9 @@ namespace Yuhan.WPF.VisualContainer
             if (IsDragStart)
             {
                 IsDragStart = false;
-                //NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, false);
+                NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, false);
+                NewItem = null;
+                NewCanvasItem = null;
             }
         }
 
@@ -257,9 +270,10 @@ namespace Yuhan.WPF.VisualContainer
 
                 Canvas.SetLeft(NewCanvasItem, x);
                 Canvas.SetTop(NewCanvasItem, y);
-                IEditableCollectionViewAddNewItem items = this.Items;
-                items.CommitNew();
-                items.CommitEdit();
+                
+                //IEditableCollectionViewAddNewItem items = this.Items;
+                //items.CommitNew();
+                //items.CommitEdit();
 
             }
         }
@@ -275,11 +289,18 @@ namespace Yuhan.WPF.VisualContainer
                 if (items.CanAddNewItem)
                 {
                     NewItem = items.AddNew();
-                    Canvas.SetLeft(NewCanvasItem, StartMousePoint.X);
-                    Canvas.SetTop(NewCanvasItem, StartMousePoint.Y);
-                    NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, true);
                     items.CommitNew();
                 }
+                else
+                {
+                    var newItem = this.GetContainerForItemOverride();
+                    
+                    int index = this.Items.Add(newItem);
+                    NewCanvasItem = this.Items[index] as VisualCanvasItem;
+                }
+                Canvas.SetLeft(NewCanvasItem, StartMousePoint.X);
+                Canvas.SetTop(NewCanvasItem, StartMousePoint.Y);
+                NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, true);
             }
         }
     }
