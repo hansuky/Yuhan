@@ -6,7 +6,7 @@ using Yuhan.Common.Models;
 
 namespace Yuhan.WPF.VisualContainer.Demo.Models.Canvas
 {
-    public class CanvasItem : NotifyPropertyChangedBase
+    public class CanvasItem : NotifyPropertyChangedBase, IShapeContainer
     {
         private Double x;
 

@@ -1,0 +1,10 @@
+﻿<Window x:Class="Yuhan.WPF.AdornerdControl.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel Orientation="Vertical">
+        <Button Height="35" Content="SimpleAdornedControlSample" Click="SimpleAdornedControlSample_Open" />
+        <Button Height="35" Content="AdvancedAdornedControlSample" Click="AdvancedAdornedControlSample_Open" />
+        <Button Height="35" Content="ImprovedAdornedControlSample" Click="ImprovedAdornedControlSample_Open"/>
+    </StackPanel>
+</Window>
