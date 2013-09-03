@@ -1,0 +1,169 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Yuhan.WPF.MenuKiller">
+    <ControlTemplate x:Key="MenuKillerButtonDefaulTemplate" 
+                     TargetType="{x:Type Button}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="MouseOver">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                               Storyboard.TargetName="contentPresenter" 
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" 
+                                          Value="1.0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="MouseOut">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                               Storyboard.TargetName="contentPresenter" 
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" 
+                                          Value="0.7"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="PressedOn">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                               Storyboard.TargetName="contentPresenter" 
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.0500000" 
+                                          Value="0.3"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="PressedOff">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                               Storyboard.TargetName="contentPresenter" 
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" 
+                                          Value="0.7"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="EnabledOff">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                               Storyboard.TargetName="contentPresenter" 
+                                               Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" 
+                                          Value="0.2"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <ContentPresenter HorizontalAlignment="Center" 
+                          VerticalAlignment="Center" 
+                          Opacity="0.7" 
+                          x:Name="contentPresenter" 
+                          Cursor="Hand">
+        </ContentPresenter>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" 
+                     SourceName="contentPresenter" 
+                     Value="True">
+                <Trigger.EnterActions>
+                    <RemoveStoryboard BeginStoryboardName="PressedOff_BeginStoryboard" />
+                    <BeginStoryboard x:Name="MouseOver_BeginStoryboard" 
+                                     Storyboard="{StaticResource MouseOver}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <!-- <RemoveStoryboard BeginStoryboardName="PressedOff_BeginStoryboard" /> -->
+                    <BeginStoryboard x:Name="MouseOut_BeginStoryboard" 
+                                     Storyboard="{StaticResource MouseOut}"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="IsPressed"  
+                     Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="PressedOn_BeginStoryboard" 
+                                     Storyboard="{StaticResource PressedOn}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard x:Name="PressedOff_BeginStoryboard" 
+                                     Storyboard="{StaticResource PressedOff}"/>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="IsEnabled" 
+                     Value="False">
+                <Trigger.EnterActions>
+                    <BeginStoryboard x:Name="EnabledOff_BeginStoryboard" 
+                                     Storyboard="{StaticResource EnabledOff}"/>
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <Style x:Key="MenuKillerBtnStyle" 
+           TargetType="{x:Type Button}">
+        <Setter Property="Template" 
+                Value="{StaticResource MenuKillerButtonDefaulTemplate}"/>
+    </Style> 
+
+    <ControlTemplate x:Key="MenuKillerTemplate" 
+                     TargetType="local:MenuKiller">
+            <ContentPresenter />
+            
+            <!--
+            Debateable, but using the more general approach is not necessary. It adds overhead, is slower and harder to databind.
+            Design decision for an API: Support the probable case, and have the crude cases available via re-templating.
+            Now, however, we are still bound to a TextBox. Hybrid approach is using the Textxt Field in the Border, but have the 
+            control epect any kind of content control.
+            -->
+
+            <!-- WARNING about the MARGIN ISSUE:
+                 this is bound to the size of the root control, which is not known to the template!! -->
+            <!--
+            <Border x:Name="PART_ToolTipBox" Background="Transparent" BorderThickness="0">
+                <TextBox IsReadOnly="True" Focusable="False" IsHitTestVisible="False" 
+                     Margin="0, 128, 0, 0" 
+                     TextBlock.FontWeight="Bold"
+                     BorderBrush="Transparent" BorderThickness="0" Background="Transparent" 
+                     Text="{TemplateBinding RootToolTip}" TextBlock.TextAlignment="Center" Width="128">
+                </TextBox>
+            </Border></Grid> -->
+        
+        <!--
+        <Border BorderBrush="Silver" BorderThickness="0" CornerRadius="7">
+            <Grid>
+                <StackPanel>
+                    <ItemsPresenter/>
+                </StackPanel>
+            </Grid>
+        </Border>-->
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MenuKillerItemTemplate" 
+                     TargetType="local:MenuKillerItem">
+        <local:ReferenceAlignPanel x:Name="PART_AlignPanel" >
+            <local:ReferenceAlignPanel.Resources>
+                <local:PanelVisibilityConverter x:Key="conv" />
+            </local:ReferenceAlignPanel.Resources>
+            
+            <Button x:Name="PART_Button" 
+                    Style="{StaticResource MenuKillerBtnStyle}">
+                <ContentPresenter ContentSource="Header" />
+            </Button>
+            
+            <local:CircularPanel x:Name="PART_Panel" 
+                                 IsItemsHost="True" 
+                                 Visibility="{TemplateBinding TreeViewItem.IsExpanded, 
+                                              Converter={StaticResource conv}}" />
+            
+        </local:ReferenceAlignPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TreeViewItem.IsExpanded" 
+                     Value="True">
+                <Setter Property="Opacity" 
+                        TargetName="PART_Button" 
+                        Value="0.5"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type local:MenuKillerItem}">
+        <Setter Property="Template" 
+                Value="{StaticResource MenuKillerItemTemplate}"/>
+    </Style>
+
+    <Style TargetType="{x:Type local:MenuKiller}">
+        <Setter Property="Template" 
+                Value="{StaticResource MenuKillerTemplate}" />
+    </Style>
+
+</ResourceDictionary>
+

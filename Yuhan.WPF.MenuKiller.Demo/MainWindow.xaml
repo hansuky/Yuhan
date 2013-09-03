@@ -1,0 +1,182 @@
+﻿<Window x:Class="MenuKillerApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mk="clr-namespace:Yuhan.WPF.MenuKiller;assembly=Yuhan.WPF.MenuKiller"
+    Title="Menu Killer" Height="1027" Width="1024" MouseDown="Grid_MouseDown">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" CanExecute="AlwaysCanExecute" Executed="ApplicationCommandsClose" />
+    </Window.CommandBindings>
+    <Grid MouseDown="Grid_MouseDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <!--
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+
+        <GridSplitter Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Top" HorizontalAlignment="Stretch" BorderBrush="Fuchsia" BorderThickness="1px"/>
+        <GridSplitter Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top" HorizontalAlignment="Stretch" BorderBrush="Fuchsia" BorderThickness="1px"/>
+
+        <GridSplitter Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Left" BorderBrush="Fuchsia" BorderThickness="1px"/>
+        <GridSplitter Grid.Column="2" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Left" BorderBrush="Fuchsia" BorderThickness="1px"/>
+        
+        -->
+        
+        <!-- I'd like to have two options for angle spacing: Distribute, Tightest -->
+        <!-- <mk:CircularPanel AngleSpacing="15" Radius="1200" StartAngle="165" Margin="10,10,10,10" VerticalAlignment="Center">
+            <Image Width="256" Source="Resources/Icons/User.png"/>
+            <Image Width="256" Source="Resources/Icons/User.png"/>
+            <Image Width="256" Source="Resources/Icons/User.png"/>
+        </mk:CircularPanel> -->
+        
+        <!--
+        <mk:CircularPanel Radius="230" Margin="10,10,10,10"  StartAngle="30" EndAngle="60" HorizontalAlignment="Right">
+            <Image Width="64" Source="Resources/Icons/User.png"/>
+            <Image Width="64" Source="Resources/Icons/Info.png"/>
+            <Image Width="64" Source="Resources/Icons/Help.png"/>
+        </mk:CircularPanel>  -->
+        <Popup x:Name="MKPopup" Placement="Custom">
+        </Popup>
+            <mk:ReferenceAlignPanel Width="800" Height="800" HorizontalReferencePointAlignment="Center" VerticalReferencePointAlignment="Center">
+                <mk:MenuKiller  Margin="2,2,2,2" x:Name="MKRoot" HoverToolTip="Default Value" VerticalAlignment="Bottom">
+                    <mk:MenuKillerItem RootToolTip="User">
+                        <mk:MenuKillerItem.Header>
+                            <Grid>
+                                <Image Width="256" Source="Resources/Icons/User.png"/>
+                            </Grid>
+                        </mk:MenuKillerItem.Header>
+
+                        <mk:MenuKillerItem RootToolTip="Properties" Command="ApplicationCommands.Close">
+                            <mk:MenuKillerItem.Header>
+                                <Image Width="128" Source="Resources/Images/Properties.png"/>
+                            </mk:MenuKillerItem.Header>
+
+                            <mk:MenuKillerItem RootToolTip="Group"  Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/Group.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+
+                            <mk:MenuKillerItem RootToolTip="Secure Group" Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/SecureGroup.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+
+                            <mk:MenuKillerItem RootToolTip="Network" Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/Network.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+                        </mk:MenuKillerItem>
+
+                        <mk:MenuKillerItem  RootToolTip="Add To" Command="ApplicationCommands.Close">
+                            <mk:MenuKillerItem.Header>
+                                <Image Width="128" Source="Resources/Images/Symbol-Add.png"/>
+                            </mk:MenuKillerItem.Header>
+
+                            <mk:MenuKillerItem RootToolTip="Group"  Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/Group.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+
+                            <mk:MenuKillerItem RootToolTip="Secure Group" Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/SecureGroup.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+
+                            <mk:MenuKillerItem RootToolTip="Network" Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/Network.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+                        </mk:MenuKillerItem>
+
+                        <mk:MenuKillerItem RootToolTip="Delete" Command="ApplicationCommands.Close">
+                            <mk:MenuKillerItem.Header>
+                                <Image Width="128" Source="Resources/Images/Symbol-Delete.png"/>
+                            </mk:MenuKillerItem.Header>
+
+                            <mk:MenuKillerItem RootToolTip="Group"  Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/Group.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+
+                            <mk:MenuKillerItem RootToolTip="Secure Group" Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/SecureGroup.png"/>
+                                </mk:MenuKillerItem.Header>
+
+                                <mk:MenuKillerItem RootToolTip="Group"  Command="ApplicationCommands.Close">
+                                    <mk:MenuKillerItem.Header>
+                                        <Image Width="32" Source="Resources/Images/Group.png"/>
+                                    </mk:MenuKillerItem.Header>
+                                </mk:MenuKillerItem>
+
+                                <mk:MenuKillerItem RootToolTip="Secure Group" Command="ApplicationCommands.Close">
+                                    <mk:MenuKillerItem.Header>
+                                        <Image Width="32" Source="Resources/Images/SecureGroup.png"/>
+                                    </mk:MenuKillerItem.Header>
+                                </mk:MenuKillerItem>
+
+                                <mk:MenuKillerItem RootToolTip="Network" Command="ApplicationCommands.Close">
+                                    <mk:MenuKillerItem.Header>
+                                        <Image Width="32" Source="Resources/Images/Network.png"/>
+                                    </mk:MenuKillerItem.Header>
+                                </mk:MenuKillerItem>
+                            </mk:MenuKillerItem>
+
+                            <mk:MenuKillerItem RootToolTip="Network" Command="ApplicationCommands.Close">
+                                <mk:MenuKillerItem.Header>
+                                    <Image Width="64" Source="Resources/Images/Network.png"/>
+                                </mk:MenuKillerItem.Header>
+                            </mk:MenuKillerItem>
+                        </mk:MenuKillerItem>
+                    </mk:MenuKillerItem>
+                </mk:MenuKiller>
+
+                <TextBox Text="{Binding Path=HoverToolTip, ElementName=MKRoot, Mode=OneWay}" 
+                     Width="128" 
+                     HorizontalAlignment="Left"
+                     TextAlignment="Center" 
+                     VerticalAlignment="Top" 
+                     Height="20px" 
+                     BorderThickness="0px" 
+                     IsHitTestVisible="False" 
+                     Background="Transparent" 
+                     Margin="0, 192, 0,0"/>
+
+            </mk:ReferenceAlignPanel>
+        <!-- </Popup> -->
+        <GridSplitter Grid.Column="0" 
+                      VerticalAlignment="Stretch" 
+                      Width="2px" 
+                      HorizontalAlignment="Right"/>
+
+        <ScrollViewer Grid.Column="1">
+            <TextBox HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Stretch" 
+                     Background="CornflowerBlue" 
+                     Name="BigTextBox" 
+                     AcceptsReturn="True" 
+                     IsReadOnly="True" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

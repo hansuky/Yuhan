@@ -1,0 +1,9 @@
+﻿<Application
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Yuhan_WPF_CircleContextMenu_Demo.App"
+	StartupUri="MainWindow.xaml">
+	<Application.Resources>
+		<!-- 응용 프로그램 수준의 리소스를 여기에 정의해야 합니다. -->
+	</Application.Resources>
+</Application>

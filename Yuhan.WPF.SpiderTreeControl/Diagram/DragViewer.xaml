@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="SpiderTreeControl.Diagram.DragViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:diagram="clr-namespace:SpiderTreeControl.Diagram;assembly="                
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="auto" Width="auto">
+
+
+    <diagram:FrictionScrollViewer x:Name="sv" Style="{StaticResource ScrollViewerStyle}">
+        <diagram:DiagramViewer x:Name="diagramViewer" Margin="0" Width="2000" Height="2000"/>
+    </diagram:FrictionScrollViewer>
+</UserControl>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="Yuhan.WPF.RadialPanel.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Yuhan.WPF.Controls;assembly=Yuhan.WPF"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+
+        <ItemsPanelTemplate x:Key="radialTemplate">
+
+            <local:RadialPanel />
+
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="enumTemplate">
+
+            <Rectangle Width="20" Height="20" Fill="{Binding Name}" ToolTip="{Binding Name}" Stroke="#FF000000"/>
+
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <ItemsControl Name="itemsControl" ItemTemplate="{DynamicResource enumTemplate}" ItemsPanel="{DynamicResource radialTemplate}"/>
+    </Grid>
+</Window>

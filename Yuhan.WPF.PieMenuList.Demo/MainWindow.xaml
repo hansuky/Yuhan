@@ -1,0 +1,58 @@
+﻿<Window x:Class="PieMenuExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:Yuhan.WPF.PieMenuList;assembly=Yuhan.WPF.PieMenuList"
+        Title="MainWindow" Height="600" Width="600">
+    <Canvas Background="Black">
+        
+        <p:PieMenu x:Name="Menu1" >
+            <p:PieMenuItem Header="Item 1">
+                <p:PieMenuItem Header="Item 1.1" Click="PieMenuItem_Click"/>
+                <p:PieMenuItem Header="Item 1.2" Command="NotACommand"/>
+                <p:PieMenuItem Header="Item 1.3" />
+            </p:PieMenuItem>
+            <p:PieMenuItem Header="Item 2">
+                <p:PieMenuItem Header="Item 2.1" />
+                <p:PieMenuItem Header="Item 2.2" />
+            </p:PieMenuItem>
+            <p:PieMenuItem Header="Item 3">
+                <p:PieMenuItem Header="Item 3.1" />
+                <p:PieMenuItem Header="Item 3.2" />
+                <p:PieMenuItem Header="Item 3.3" />
+                <p:PieMenuItem Header="Item 3.4" />
+            </p:PieMenuItem>
+        </p:PieMenu>
+
+        <p:PieMenu x:Name="Menu2"
+                   Canvas.Left="100"
+                   Canvas.Top="100"
+                   Background="Blue"
+                   SelectedBackground="LightBlue"
+                   Foreground="White"
+                   BorderBrush="Red"
+                   SectorGap="10"
+                   Gap="10"
+                   Radius="100"
+                   InnerRadius="0"
+                   RotateText="False"
+                   Rotation="180"
+                   MenuSector="180">
+            <p:PieMenuItem Header="Item 1" BorderThickness="1" SubMenuSector="90">
+                <p:PieMenuItem Header="Item 1.1" />
+                <p:PieMenuItem Header="Item 1.2" />
+                <p:PieMenuItem Header="Item 1.3" />
+            </p:PieMenuItem>
+            <p:PieMenuItem Header="Item 2" BorderThickness="2" BorderBrush="Green" SubMenuSector="60">
+                <p:PieMenuItem Header="Item 2.1" />
+                <p:PieMenuItem Header="Item 2.2" />
+            </p:PieMenuItem>
+            <p:PieMenuItem Header="Item 3" FontFamily="Times New Roman" FontStyle="Italic" FontSize="14" Background="Green" Foreground="Black" >
+                <p:PieMenuItem Header="Item 3.1" />
+                <p:PieMenuItem Header="Item 3.2" />
+                <p:PieMenuItem Header="Item 3.3" />
+                <p:PieMenuItem Header="Item 3.4" />
+            </p:PieMenuItem>
+        </p:PieMenu>
+
+    </Canvas>
+</Window>

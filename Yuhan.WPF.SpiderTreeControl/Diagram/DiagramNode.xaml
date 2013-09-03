@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="SpiderTreeControl.Diagram.DiagramNode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:diagram="clr-namespace:SpiderTreeControl.Diagram"  
+             
+    Height="80" Width="90" 
+    Background="Transparent"
+    BorderBrush="Transparent">
+
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static diagram:DiagramNode.expandCommand}" 
+            CanExecute="ExpandCommand_CanExecute"
+            Executed="ExpandCommand_Executed"/>
+
+        <CommandBinding Command="{x:Static diagram:DiagramNode.collapseCommand}" 
+            CanExecute="CollapseCommand_CanExecute"
+            Executed="CollapseCommand_Executed"/>
+
+    </UserControl.CommandBindings>
+
+
+
+    <UserControl.Resources>
+
+        <ControlTemplate x:Key="expandCollapseButton" TargetType="{x:Type Button}">
+            <Grid Width="20" Height="20" Background="Transparent">
+                <Ellipse Width="20" Height="20" Fill="DarkGray"/>
+                <Ellipse Width="16" Height="16" Fill="WhiteSmoke"/>
+                
+                <Label x:Name="lbl" Content="{TemplateBinding Content}" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Background="Transparent"
+                       FontFamily="Arial Black" FontSize="10"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="lbl" Property="Foreground" Value="DarkGray"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BitmapEffect">
+                        <Setter.Value>
+                            <DropShadowBitmapEffect />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+    </UserControl.Resources>
+    
+    
+    <Canvas Background="Transparent" Width="90" Height="80" >
+        <Label x:Name="NodeName" Content="Name" FontFamily="Arial Black" 
+               FontSize="14" Canvas.ZIndex="1"/>
+        
+        <Button x:Name="btnNavigate" 
+                Template="{StaticResource simpleImageButtonTemplate}"
+                Click="btnNavigate_Click" Width="60" Height="60" 
+                Canvas.Left="20" Canvas.Top="20"
+                Canvas.ZIndex="0"/>
+        
+        <Button x:Name="ExpandButton" Content="+" 
+                Canvas.Top="30" Canvas.Left="0"
+                Template="{StaticResource expandCollapseButton}"
+                Command="{x:Static diagram:DiagramNode.expandCommand}" />
+
+
+        <Button x:Name="CollapseButton" Content="-" 
+                Canvas.Top="55" Canvas.Left="0"
+                Template="{StaticResource expandCollapseButton}"
+                Command="{x:Static diagram:DiagramNode.collapseCommand}" />
+    </Canvas>
+</UserControl>
