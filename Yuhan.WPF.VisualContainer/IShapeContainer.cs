@@ -5,19 +5,19 @@ using System.Text;
 
 namespace Yuhan.WPF.VisualContainer
 {
-    interface IShapeContainer
+    public interface IShapeContainer
     {
         Double Width { get; set; }
         Double Height { get; set; }
     }
 
-    interface ICanvasCoordinator
+    public interface ICanvasCoordinator
     {
         Double X { get; set; }
         Double Y { get; set; }
     }
 
-    interface IGridCoordinator
+    public interface IGridCoordinator
     {
         int Row { get; set; }
         int Cell { get; set; }
