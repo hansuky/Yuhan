@@ -33,7 +33,6 @@
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="2" Grid.Row="2">
             <Canvas>
                 <Button Content="Button" Canvas.Left="99" Canvas.Top="42" Width="75"/>
-
             </Canvas>
         </Border>
     </Grid>

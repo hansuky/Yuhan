@@ -12,6 +12,20 @@ namespace Yuhan.WPF.VisualContainer
     //public class VisualCanvasItem : ListBoxItem
     public class VisualCanvasItem : ListBoxItem
     {
+
+
+        public Boolean IsEditable
+        {
+            get { return (Boolean)GetValue(IsEditableProperty); }
+            set { SetValue(IsEditableProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsEditable.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsEditableProperty =
+            DependencyProperty.Register("IsEditable", typeof(Boolean), typeof(VisualCanvasItem), new PropertyMetadata(false));
+
+
+
         public Boolean IsDrawing
         {
             get { return (Boolean)GetValue(IsDrawingProperty); }
@@ -22,25 +36,7 @@ namespace Yuhan.WPF.VisualContainer
         public static readonly DependencyProperty IsDrawingProperty =
             DependencyProperty.Register("IsDrawing", typeof(Boolean), typeof(VisualCanvasItem), new PropertyMetadata(false, OnIsDrawingChanged));
 
-        protected static void OnIsDrawingChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            obj.SetValue(VisualCanvasItem.IsDrawnProperty, !(Boolean)e.NewValue);
-        }
-
-        public Boolean IsDrawn
-        {
-            get { return (Boolean)GetValue(IsDrawnProperty); }
-            set { SetValue(IsDrawnProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for IsDrawn.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty IsDrawnProperty =
-            DependencyProperty.Register("IsDrawn", typeof(Boolean), typeof(VisualCanvasItem), new PropertyMetadata(true, OnIsDrawnChanged));
-
-        protected static void OnIsDrawnChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            obj.SetValue(VisualCanvasItem.IsDrawingProperty, !(Boolean)e.NewValue);
-        }
+        protected static void OnIsDrawingChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e) { }
 
         public VisualCanvasItem()
             : base()
@@ -50,7 +46,6 @@ namespace Yuhan.WPF.VisualContainer
                 {
                     Source = new Uri("pack://application:,,,/Yuhan.WPF.VisualContainer;component/Resources/VisualCanvasItem.xaml")
                 });
-            this.Background = new SolidColorBrush(Colors.Blue);
         }
     }
 }

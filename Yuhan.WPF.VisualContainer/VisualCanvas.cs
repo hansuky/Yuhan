@@ -220,8 +220,8 @@ namespace Yuhan.WPF.VisualContainer
             if (IsDragStart)
             {
                 VisualCanvasItem item = new VisualCanvasItem();
-                item.SetBinding(VisualCanvasItem.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.OneWayToSource });
-                item.SetBinding(VisualCanvasItem.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.OneWayToSource });
+                item.SetBinding(VisualCanvasItem.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
+                item.SetBinding(VisualCanvasItem.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
                 return item;
             }
             return base.GetContainerForItemOverride();
@@ -231,7 +231,11 @@ namespace Yuhan.WPF.VisualContainer
 
         void VisualCanvas_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (IsDragStart) IsDragStart = false;
+            if (IsDragStart)
+            {
+                IsDragStart = false;
+                //NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, false);
+            }
         }
 
         void VisualCanvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
@@ -248,12 +252,8 @@ namespace Yuhan.WPF.VisualContainer
                 var width = Math.Max(CurrentMousePoint.X, StartMousePoint.X) - x;
                 var height = Math.Max(CurrentMousePoint.Y, StartMousePoint.Y) - y;
 
-                //NewCanvasItem.SetBinding(VisualCanvasItem.WidthProperty, new Binding(this.WidthFieldName) { Source = NewItem });
-                //NewCanvasItem.SetBinding(VisualCanvasItem.HeightProperty, new Binding(this.HeightFieldName) { Source = NewItem });
                 NewCanvasItem.SetCurrentValue(FrameworkElement.WidthProperty, width);
                 NewCanvasItem.SetCurrentValue(FrameworkElement.HeightProperty, height);
-                //NewCanvasItem.GetBindingExpression(FrameworkElement.WidthProperty).UpdateSource();
-                //NewCanvasItem.GetBindingExpression(FrameworkElement.HeightProperty).UpdateSource();
 
                 Canvas.SetLeft(NewCanvasItem, x);
                 Canvas.SetTop(NewCanvasItem, y);
@@ -277,6 +277,7 @@ namespace Yuhan.WPF.VisualContainer
                     NewItem = items.AddNew();
                     Canvas.SetLeft(NewCanvasItem, StartMousePoint.X);
                     Canvas.SetTop(NewCanvasItem, StartMousePoint.Y);
+                    NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, true);
                     items.CommitNew();
                 }
             }
