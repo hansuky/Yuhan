@@ -43,6 +43,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CommandReference.cs" />
+    <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Controls\BindableScrollBar.cs" />
     <Compile Include="Controls\RadialPanel.cs" />
