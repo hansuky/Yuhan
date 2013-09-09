@@ -82,12 +82,17 @@
                     <Image Source="Images\ParagraphDecreaseIndentation.png"></Image>
                 </Button>               
             </ToolBar>
-            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
                 <RichTextBox Name="mainRTB" AcceptsTab="True" FontFamily="Malgun Gothic"
                              asis:RichTextboxAssistant.BoundDocument="{Binding Path=Text, ElementName=uxRichTextEditor}"
                              VerticalScrollBarVisibility="Visible" />
-                <!--<TextBox Text="{Binding Path=Text, ElementName=uxRichTextEditor}" Height="25" />-->
-
+                <TextBox Text="{Binding Path=Text, ElementName=uxRichTextEditor}" Height="25" Grid.Row="1" VerticalAlignment="Stretch"
+                         AcceptsReturn="True"/>
+            </Grid>
         </DockPanel>
     </Grid>
 </UserControl>
