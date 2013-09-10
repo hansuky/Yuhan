@@ -53,6 +53,7 @@
     <Compile Include="Converters\DecimalToQuantityConverter.cs" />
     <Compile Include="Converters\NullToCollapseConverter.cs" />
     <Compile Include="Converters\StringToBindingConverter.cs" />
+    <Compile Include="Extensions\ItemCollectionExtension.cs" />
     <Compile Include="Helpers\DynamicTemplateSelector.cs" />
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
