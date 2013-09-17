@@ -16,6 +16,26 @@ namespace Yuhan.WPF.VisualContainer
 {
     public class VisualCanvas : Selector
     {
+        public Double MinItemWidth
+        {
+            get { return (Double)GetValue(MinItemWidthProperty); }
+            set { SetValue(MinItemWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MinItemWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MinItemWidthProperty =
+            DependencyProperty.Register("MinItemWidth", typeof(Double), typeof(VisualCanvas), new PropertyMetadata(Double.NaN));
+
+        public Double MinItemHeight
+        {
+            get { return (Double)GetValue(MinItemHeightProperty); }
+            set { SetValue(MinItemHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MinItemHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MinItemHeightProperty =
+            DependencyProperty.Register("MinItemHeight", typeof(Double), typeof(VisualCanvas), new PropertyMetadata(Double.NaN));
+
         public Boolean IsEditable
         {
             get { return (Boolean)GetValue(IsEditableProperty); }
@@ -246,6 +266,12 @@ namespace Yuhan.WPF.VisualContainer
             {
                 IsDragStart = false;
                 NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, false);
+                if (MinItemWidth != Double.NaN && (Double)NewCanvasItem.GetValue(VisualCanvasItem.WidthProperty) < MinItemWidth)
+                    NewCanvasItem.SetCurrentValue(VisualCanvasItem.WidthProperty, MinItemWidth);
+                if (MinItemHeight != Double.NaN && (Double)NewCanvasItem.GetValue(VisualCanvasItem.HeightProperty) < MinItemHeight)
+                    NewCanvasItem.SetCurrentValue(VisualCanvasItem.HeightProperty, MinItemHeight);
+                IEditableCollectionViewAddNewItem items = this.Items;
+                items.CommitEdit();
                 NewItem = null;
                 NewCanvasItem = null;
             }
@@ -270,11 +296,9 @@ namespace Yuhan.WPF.VisualContainer
 
                 Canvas.SetLeft(NewCanvasItem, x);
                 Canvas.SetTop(NewCanvasItem, y);
-                
-                //IEditableCollectionViewAddNewItem items = this.Items;
-                //items.CommitNew();
-                //items.CommitEdit();
 
+                IEditableCollectionViewAddNewItem items = this.Items;
+                items.CommitEdit();
             }
         }
 
