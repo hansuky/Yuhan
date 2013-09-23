@@ -1,0 +1,51 @@
+﻿<Controls:AdornedControl x:Class="Yuhan.WPF.VisualContainer.Demo.Controls.CanvasItemContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:Yuhan.WPF.Controls;assembly=Yuhan.WPF.AdornedControl"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" x:Name="ContainerControl"
+             d:DesignHeight="35" d:DesignWidth="100" Background="{x:Null}" MinWidth="30" MinHeight="30"
+                             HorizontalAdornerPlacement="Inside"
+                             VerticalAdornerPlacement="Inside" IsAdornerVisible="True" Margin="0" Padding="0">
+    <Controls:AdornedControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Yuhan.WPF.VisualContainer.Demo;component/Resources/CircleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Controls:AdornedControl.Resources>
+    <Grid Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black" >
+        <Button x:Name="Button" Opacity="0.7" Content="{Binding ContainerName,ElementName=ContainerControl}" Margin="2" Padding="0" Click="SetUpRequestBtn_Click"/>
+    </Grid>
+    <Controls:AdornedControl.AdornerContent>
+        <Grid x:Name="AdornerLayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0">
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="#FF000000" StrokeDashArray="3" SnapsToDevicePixels="True"/>
+            <Rectangle x:Name="LeftBtn" Width="8" Height="8" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="White" Margin="-4, 0, 0, 0" Cursor="SizeWE" 
+                       MouseLeftButtonDown="SizeBtn_MouseDown" MouseLeftButtonUp="SizeBtn_MouseUp" MouseMove="SizeBtn_Move" Tag="Left" Stroke="#FF000000"
+                       SnapsToDevicePixels="True"/>
+            <Rectangle x:Name="RightBtn" Width="8" Height="8" HorizontalAlignment="Right" VerticalAlignment="Center" Fill="White" Margin="0, 0, -4, 0" Cursor="SizeWE" 
+                       MouseLeftButtonDown="SizeBtn_MouseDown" MouseLeftButtonUp="SizeBtn_MouseUp" MouseMove="SizeBtn_Move" Tag="Right" Stroke="#FF000000"
+                       SnapsToDevicePixels="True"/>
+            <Rectangle x:Name="TopBtn" Width="8" Height="8" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="White" Margin="0, -4, 0, 0" Cursor="SizeNS" 
+                       MouseLeftButtonDown="SizeBtn_MouseDown" MouseLeftButtonUp="SizeBtn_MouseUp" MouseMove="SizeBtn_Move" Tag="Top" Stroke="#FF000000"
+                       SnapsToDevicePixels="True"/>
+            <Rectangle x:Name="BottonBtn" Width="8" Height="8" HorizontalAlignment="Center" VerticalAlignment="Bottom" Fill="White" Margin="0, 0, 0, -4" Cursor="SizeNS" 
+                       MouseLeftButtonDown="SizeBtn_MouseDown" MouseLeftButtonUp="SizeBtn_MouseUp" MouseMove="SizeBtn_Move" Tag="Bottom" Stroke="#FF000000"
+                       SnapsToDevicePixels="True"/>
+            <Rectangle x:Name="MoveBtn" Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Fill="{DynamicResource AccentColorBrush}" Margin="0, 0, -4, -4" Cursor="Cross" 
+                       MouseLeftButtonDown="SizeBtn_MouseDown" MouseLeftButtonUp="SizeBtn_MouseUp" MouseMove="SizeBtn_Move" Tag="ALL" Stroke="#FF000000"
+                       SnapsToDevicePixels="True"/>
+            <Grid x:Name="grid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-10, -10, 0, 0" Width="20" Height="20"
+                  SnapsToDevicePixels="True" Cursor="Hand" 
+                  MouseLeftButtonDown="SizeBtn_MouseDown" MouseLeftButtonUp="SizeBtn_MouseUp" MouseMove="SizeBtn_Move" Tag="Move">
+                <Ellipse Stroke="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{DynamicResource AccentColorBrush}"
+                          SnapsToDevicePixels="True" StrokeThickness="2"/>
+                <Viewbox Margin="5">
+                    <TextBlock Text="{Binding Seq, Mode=OneWay}" />
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Controls:AdornedControl.AdornerContent>
+</Controls:AdornedControl>

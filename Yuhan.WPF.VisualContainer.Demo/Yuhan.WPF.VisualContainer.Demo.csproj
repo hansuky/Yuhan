@@ -54,8 +54,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Controls\CanvasItemContainer.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Controls\CanvasItemContainer.xaml.cs">
       <DependentUpon>CanvasItemContainer.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -74,8 +75,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\CircleButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +125,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\color.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

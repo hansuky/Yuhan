@@ -213,13 +213,13 @@ namespace Yuhan.WPF.VisualContainer
 
         private Boolean IsDragStart { get; set; }
         private Object NewItem { get; set; }
-        private VisualCanvasItem newCanvasItem;
-        private VisualCanvasItem NewCanvasItem
+        private FrameworkElement newCanvasItem;
+        private FrameworkElement NewCanvasItem
         {
             get
             {
                 if (NewItem != null)
-                    return this.ItemContainerGenerator.ContainerFromItem(NewItem) as VisualCanvasItem;
+                    return this.ItemContainerGenerator.ContainerFromItem(NewItem) as FrameworkElement;
                 else
                     return newCanvasItem;
             }
@@ -251,10 +251,18 @@ namespace Yuhan.WPF.VisualContainer
             if (IsDragStart)
             {
                 VisualCanvasItem item = new VisualCanvasItem();
+
                 item.SetBinding(VisualCanvasItem.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
                 item.SetBinding(VisualCanvasItem.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
+                item.OnApplyTemplate();
                 return item;
             }
+            //FrameworkElement element = base.GetContainerForItemOverride() as FrameworkElement;
+            //if (element != null)
+            //{
+            //    element.SetBinding(FrameworkElement.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
+            //    element.SetBinding(FrameworkElement.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
+            //}
             return base.GetContainerForItemOverride();
 
         }
@@ -324,7 +332,6 @@ namespace Yuhan.WPF.VisualContainer
                 }
                 Canvas.SetLeft(NewCanvasItem, StartMousePoint.X);
                 Canvas.SetTop(NewCanvasItem, StartMousePoint.Y);
-                NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, true);
             }
         }
     }

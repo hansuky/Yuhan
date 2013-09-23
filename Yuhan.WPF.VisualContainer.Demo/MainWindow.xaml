@@ -33,7 +33,7 @@
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
                 <vc:VisualCanvas ItemsSource="{Binding CanvasItems}" IsEditable="True" x:Name="VisualCanvas"
-                             ImageSource="Images/images.jpg" ImageStrech="Fill" MinItemHeight="30" MinItemWidth="30">
+                             ImageSource="Images/color.png" ImageStrech="Fill" MinItemHeight="30" MinItemWidth="30" Background="Black">
                     <vc:VisualCanvas.ItemTemplate>
                         <DataTemplate>
                             <control:CanvasItemContainer 
@@ -44,7 +44,9 @@
                         </DataTemplate>
                     </vc:VisualCanvas.ItemTemplate>
                 </vc:VisualCanvas>
-                <DataGrid Grid.Column="1" ItemsSource="{Binding Path=ItemsSource, ElementName=VisualCanvas}" />
+                <DataGrid Grid.Column="1" 
+                          ItemsSource="{Binding Path=ItemsSource, ElementName=VisualCanvas}" 
+                          CanUserAddRows="False" CanUserDeleteRows="False" SelectedItem="{Binding SelectedItem, ElementName=VisualCanvas}"  />
             </Grid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="2" Grid.Row="2" >
