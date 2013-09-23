@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vc="clr-namespace:Yuhan.WPF.VisualContainer;assembly=Yuhan.WPF.VisualContainer"
         xmlns:viewModel="clr-namespace:Yuhan.WPF.VisualContainer.Demo"
+        xmlns:control="clr-namespace:Yuhan.WPF.VisualContainer.Demo.Controls"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <viewModel:MainViewModel x:Key="ViewModel" />
@@ -26,14 +27,25 @@
             </vc:VisualGrid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="2" Grid.Row="1">
-            <vc:VisualCanvas ItemsSource="{Binding CanvasItems}" IsEditable="True" x:Name="VisualCanvas"
-                             ImageSource="Images/images.jpg" ImageStrech="Fill">
-                <vc:VisualCanvas.ItemTemplate>
-                    <DataTemplate>
-                        <Button Width="{Binding Width}" Height="{Binding Height}" Margin="-2, 0"/>
-                    </DataTemplate>
-                </vc:VisualCanvas.ItemTemplate>
-            </vc:VisualCanvas>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <vc:VisualCanvas ItemsSource="{Binding CanvasItems}" IsEditable="True" x:Name="VisualCanvas"
+                             ImageSource="Images/images.jpg" ImageStrech="Fill" MinItemHeight="30" MinItemWidth="30">
+                    <vc:VisualCanvas.ItemTemplate>
+                        <DataTemplate>
+                            <control:CanvasItemContainer 
+                                Width="{Binding Width, Mode=TwoWay}" 
+                                Height="{Binding Height, Mode=TwoWay}" 
+                                Canvas.Left="{Binding X, Mode=TwoWay}"
+                                Canvas.Top="{Binding Y, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </vc:VisualCanvas.ItemTemplate>
+                </vc:VisualCanvas>
+                <DataGrid Grid.Column="1" ItemsSource="{Binding Path=ItemsSource, ElementName=VisualCanvas}" />
+            </Grid>
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1" Margin="2" Grid.Row="2" >
             <vc:VisualCanvas IsEditable="True"

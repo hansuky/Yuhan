@@ -12,7 +12,7 @@ using System.Windows.Threading;
 using System.Windows.Media.Animation;
 using System.Diagnostics;
 
-namespace Yuhan.WPF.AdornedControl
+namespace Yuhan.WPF.Controls
 {
     /// <summary>
     /// A content control that allows an adorner for the content to

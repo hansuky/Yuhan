@@ -53,6 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\CanvasItemContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,11 +65,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\CanvasItemContainer.xaml.cs">
+      <DependentUpon>CanvasItemContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\CircleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Canvas\CanvasItem.cs" />
@@ -97,6 +108,10 @@
     <ProjectReference Include="..\Yuhan.Common\Yuhan.Common.csproj">
       <Project>{dfb82eec-411e-4ede-ab06-2333f9259cbf}</Project>
       <Name>Yuhan.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yuhan.WPF.AdornedControl\Yuhan.WPF.AdornedControl.csproj">
+      <Project>{e02fd37d-d9e7-4736-9fc1-8a596b844e25}</Project>
+      <Name>Yuhan.WPF.AdornedControl</Name>
     </ProjectReference>
     <ProjectReference Include="..\Yuhan.WPF.VisualContainer\Yuhan.WPF.VisualContainer.csproj">
       <Project>{82d32530-19f1-4b9e-9722-22fbfa41d73e}</Project>

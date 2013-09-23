@@ -12,7 +12,7 @@ using System.Collections;
 //
 //  http://www.codeproject.com/KB/WPF/WPFJoshSmith.aspx
 //
-namespace Yuhan.WPF.AdornedControl
+namespace Yuhan.WPF.Controls
 {
     //
     // This class is an adorner that allows a FrameworkElement derived class to adorn another FrameworkElement.
