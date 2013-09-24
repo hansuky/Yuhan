@@ -240,6 +240,7 @@ namespace Yuhan.WPF.VisualContainer
                 {
                     Source = new Uri("pack://application:,,,/Yuhan.WPF.VisualContainer;component/Resources/VisualCanvas.xaml")
                 });
+            
             this.MouseLeftButtonDown += VisualCanvas_MouseLeftButtonDown;
             this.MouseMove += VisualCanvas_MouseMove;
             this.MouseLeftButtonUp += VisualCanvas_MouseLeftButtonUp;
@@ -248,22 +249,25 @@ namespace Yuhan.WPF.VisualContainer
         #region Override Methods
         protected override DependencyObject GetContainerForItemOverride()
         {
-            if (IsDragStart)
-            {
-                VisualCanvasItem item = new VisualCanvasItem();
-
-                item.SetBinding(VisualCanvasItem.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
-                item.SetBinding(VisualCanvasItem.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
-                item.OnApplyTemplate();
-                return item;
-            }
-            //FrameworkElement element = base.GetContainerForItemOverride() as FrameworkElement;
-            //if (element != null)
+            //if (IsDragStart)
             //{
-            //    element.SetBinding(FrameworkElement.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
-            //    element.SetBinding(FrameworkElement.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
+            //    VisualCanvasItem item = new VisualCanvasItem();
+
+            //    item.SetBinding(VisualCanvasItem.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
+            //    item.SetBinding(VisualCanvasItem.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
+            //    item.OnApplyTemplate();
+            //    return item;
             //}
-            return base.GetContainerForItemOverride();
+            FrameworkElement element = base.GetContainerForItemOverride() as FrameworkElement;
+            if (element != null)
+            {
+                element.OnApplyTemplate();
+                element.SetBinding(FrameworkElement.WidthProperty, new Binding(this.WidthFieldName) { Mode = BindingMode.TwoWay });
+                element.SetBinding(FrameworkElement.HeightProperty, new Binding(this.HeightFieldName) { Mode = BindingMode.TwoWay });
+                element.SetCurrentValue(FrameworkElement.MinWidthProperty, this.MinWidth);
+                element.SetCurrentValue(FrameworkElement.MinHeightProperty, this.MinHeight);
+            }
+            return element;
 
         }
         #endregion
@@ -273,15 +277,16 @@ namespace Yuhan.WPF.VisualContainer
             if (IsDragStart)
             {
                 IsDragStart = false;
-                NewCanvasItem.SetCurrentValue(VisualCanvasItem.IsDrawingProperty, false);
-                if (MinItemWidth != Double.NaN && (Double)NewCanvasItem.GetValue(VisualCanvasItem.WidthProperty) < MinItemWidth)
-                    NewCanvasItem.SetCurrentValue(VisualCanvasItem.WidthProperty, MinItemWidth);
-                if (MinItemHeight != Double.NaN && (Double)NewCanvasItem.GetValue(VisualCanvasItem.HeightProperty) < MinItemHeight)
-                    NewCanvasItem.SetCurrentValue(VisualCanvasItem.HeightProperty, MinItemHeight);
+                if (MinItemWidth != Double.NaN && (Double)NewCanvasItem.GetValue(FrameworkElement.WidthProperty) < MinItemWidth)
+                    NewCanvasItem.SetCurrentValue(FrameworkElement.WidthProperty, MinItemWidth);
+                if (MinItemHeight != Double.NaN && (Double)NewCanvasItem.GetValue(FrameworkElement.HeightProperty) < MinItemHeight)
+                    NewCanvasItem.SetCurrentValue(FrameworkElement.HeightProperty, MinItemHeight);
                 IEditableCollectionViewAddNewItem items = this.Items;
                 items.CommitEdit();
                 NewItem = null;
                 NewCanvasItem = null;
+                e.Handled = true;
+                Mouse.Capture(this, CaptureMode.None);
             }
         }
 
@@ -299,6 +304,7 @@ namespace Yuhan.WPF.VisualContainer
                 var width = Math.Max(CurrentMousePoint.X, StartMousePoint.X) - x;
                 var height = Math.Max(CurrentMousePoint.Y, StartMousePoint.Y) - y;
 
+                
                 NewCanvasItem.SetCurrentValue(FrameworkElement.WidthProperty, width);
                 NewCanvasItem.SetCurrentValue(FrameworkElement.HeightProperty, height);
 
@@ -314,6 +320,7 @@ namespace Yuhan.WPF.VisualContainer
         {
             if (IsEditable)
             {
+                Mouse.Capture(this, CaptureMode.SubTree);
                 this.IsDragStart = true;
                 IEditableCollectionViewAddNewItem items = this.Items;
                 StartMousePoint = e.GetPosition(sender as IInputElement);
@@ -322,16 +329,10 @@ namespace Yuhan.WPF.VisualContainer
                 {
                     NewItem = items.AddNew();
                     items.CommitNew();
+                    Canvas.SetLeft(NewCanvasItem, StartMousePoint.X);
+                    Canvas.SetTop(NewCanvasItem, StartMousePoint.Y);
                 }
-                else
-                {
-                    var newItem = this.GetContainerForItemOverride();
-                    
-                    int index = this.Items.Add(newItem);
-                    NewCanvasItem = this.Items[index] as VisualCanvasItem;
-                }
-                Canvas.SetLeft(NewCanvasItem, StartMousePoint.X);
-                Canvas.SetTop(NewCanvasItem, StartMousePoint.Y);
+                
             }
         }
     }
