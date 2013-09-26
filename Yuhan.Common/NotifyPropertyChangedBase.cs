@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Yuhan.Common.Models
 {
+    [DataContract]
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Memebers
+        
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
