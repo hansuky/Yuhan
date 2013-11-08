@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\ObjectEventArgs.cs" />
+    <Compile Include="Events\TransactionEventArgs.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Extensions\ICollectionExtension.cs" />
     <Compile Include="Extensions\IntExtension.cs" />
