@@ -8,21 +8,9 @@ using System.Runtime.Serialization;
 namespace Yuhan.Common.Models
 {
     [DataContract]
-    public class NotifyPropertyChangedBase : INotifyPropertyChanged
+    public class NotifyPropertyChangedBase : NotificationObject
     {
-        #region INotifyPropertyChanged Memebers
-        
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-
         #region Methods
-        //protected virtual bool ChangedPropertyChanged<T>
-        //    (T property, ref T oldValue, ref T newValue)
-        //{
-        //    return ChangedPropertyChanged<T>
-        //        //(property.GetType().UnderlyingSystemType.Name, ref oldValue, ref newValue);
-        //        (ObjectExtension.GetPropertyName(() => property), ref oldValue, ref newValue);
-        //}
 
         protected virtual bool ChangedPropertyChanged<T>
             (string propertyName, ref T oldValue, ref T newValue)
@@ -42,17 +30,7 @@ namespace Yuhan.Common.Models
             
             return false;
         }
-        protected virtual void RaisePropertyChanged(String propertyName)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        //protected virtual void RaisePropertyChanged<T>(T property)
-        //{
-        //    RaisePropertyChanged(property.GetType().UnderlyingSystemType.Name);
-        //}
-
+        
         #endregion
     }
 }

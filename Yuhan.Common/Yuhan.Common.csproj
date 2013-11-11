@@ -49,6 +49,7 @@
     <Compile Include="Helpers\IRuleViolator.cs" />
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Helpers\RuleViolation.cs" />
+    <Compile Include="NotificationObject.cs" />
     <Compile Include="NotifyPropertyChangedBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
