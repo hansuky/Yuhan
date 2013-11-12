@@ -43,6 +43,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\ObservableQueue.cs" />
     <Compile Include="Command\CommandReference.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
