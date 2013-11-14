@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ITCFW.Common.Extensions
+namespace Yuhan.Common.Extensions
 {
     public static class ICollectionExtension
     {

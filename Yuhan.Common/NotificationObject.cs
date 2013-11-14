@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Runtime.Serialization;
 
 namespace Yuhan.Common
 {
+    [DataContract]
     public class NotificationObject : INotifyPropertyChanged
     {
         protected void RaisePropertyChanged<T>(Expression<Func<T>> action)
