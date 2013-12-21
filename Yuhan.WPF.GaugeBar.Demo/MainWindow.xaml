@@ -1,0 +1,10 @@
+﻿<Window x:Class="Yuhan.WPF.GaugeBar.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:Yuhan.WPF.Controls;assembly=Yuhan.WPF.GaugeBar"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel Orientation="Vertical">
+        <control:GaugeBar Height="20" Percentage="80" ShowValue="True" Text="Value"/>
+        <control:GaugeBar Height="20" Percentage="70" ShowValue="True" Text="Value" TBarBackground="Red" />
+    </StackPanel>
+</Window>

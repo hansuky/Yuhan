@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Yuhan.WPF.Controls
 {
@@ -58,10 +49,54 @@ namespace Yuhan.WPF.Controls
             gaugeBar.SetPercentageBarSize();
         }
 
+        public Brush BorderBrush
+        {
+            get { return (Brush)GetValue(BorderBrushProperty); }
+            set { SetValue(BorderBrushProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for BorderBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty BorderBrushProperty =
+            DependencyProperty.Register("BorderBrush",
+            typeof(Brush), typeof(GaugeBar),
+            new PropertyMetadata(new SolidColorBrush(Color.FromRgb(98, 141, 182)), OnBorderBrushChanged));
+
+        protected static void OnBorderBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) { }
+
+        public Brush TBarBackground
+        {
+            get { return (Brush)GetValue(TBarBackgroundProperty); }
+            set { SetValue(TBarBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TBarBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TBarBackgroundProperty =
+            DependencyProperty.Register("TBarBackground",
+            typeof(Brush), typeof(GaugeBar),
+            new PropertyMetadata(new SolidColorBrush(Color.FromRgb(59, 89, 152)), OnTBarBackgroundChanged));
+
+        protected static void OnTBarBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) { }
+
+
+
+        public Brush VBarBackground
+        {
+            get { return (Brush)GetValue(VBarBackgroundProperty); }
+            set { SetValue(VBarBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for VBarBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty VBarBackgroundProperty =
+            DependencyProperty.Register("VBarBackground",
+            typeof(Brush), typeof(GaugeBar),
+            new PropertyMetadata(new SolidColorBrush(Color.FromRgb(191, 19, 7)), OnVBarBackgroundChanged));
+
+        protected static void OnVBarBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) { }
 
         public GaugeBar()
         {
             InitializeComponent();
+            this.Foreground = new SolidColorBrush(Colors.White);
             DoubleAnimation ani = new DoubleAnimation();
             this.Loaded += GaugeBar_Loaded;
             this.SizeChanged += GaugeBar_SizeChanged;

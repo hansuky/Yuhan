@@ -38,13 +38,13 @@
             <BeginStoryboard Storyboard="{StaticResource LoadStory}" />
         </EventTrigger>
     </UserControl.Triggers>
-    <Border BorderThickness="1" BorderBrush="#628DB6" DataContext="{Binding ElementName=Control}" x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Border BorderThickness="1" BorderBrush="{Binding Path=BorderBrush, ElementName=Control, Mode=OneWay}" DataContext="{Binding ElementName=Control}" x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid x:Name="Bar" HorizontalAlignment="Left">
-            <Border Background="#3B5998" x:Name="TBar" HorizontalAlignment="Left" Width="{Binding ElementName=Bar, Path=ActualWidth}"/>
-            <Border Background="#BF1307" x:Name="VBar" VerticalAlignment="Stretch" Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Right" Visibility="{Binding ShowValue, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Background="{Binding Path=TBarBackground, Mode=OneWay, ElementName=Control}" x:Name="TBar" HorizontalAlignment="Left" Width="{Binding ElementName=Bar, Path=ActualWidth}"/>
+            <Border Background="{Binding Path=VBarBackground, Mode=OneWay, ElementName=Control}" x:Name="VBar" VerticalAlignment="Stretch" Width="{Binding ActualHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Right" Visibility="{Binding ShowValue, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Viewbox Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="{Binding Path=Text, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"
-                               Foreground="White"/>
+                               Foreground="{Binding Path=Foreground, Mode=OneWay, ElementName=Control}"/>
                 </Viewbox>
             </Border>
         </Grid>
