@@ -81,6 +81,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yunan.WPF.ImageAnim", "Yuna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.WPF.GaugeBar.Demo", "Yuhan.WPF.GaugeBar.Demo\Yuhan.WPF.GaugeBar.Demo.csproj", "{02AD0836-64D8-413F-9B0A-51C2EF37221F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuhan.Deployment", "Yuhan.Deployment\Yuhan.Deployment.csproj", "{6C95656B-BF61-4CD4-B051-B26E5D312D54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,10 @@ Global
 		{02AD0836-64D8-413F-9B0A-51C2EF37221F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02AD0836-64D8-413F-9B0A-51C2EF37221F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02AD0836-64D8-413F-9B0A-51C2EF37221F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C95656B-BF61-4CD4-B051-B26E5D312D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C95656B-BF61-4CD4-B051-B26E5D312D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C95656B-BF61-4CD4-B051-B26E5D312D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C95656B-BF61-4CD4-B051-B26E5D312D54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
