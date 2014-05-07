@@ -5,7 +5,7 @@
     xmlns:MessageBox="clr-namespace:Yuhan.WPF.MessageBox"
     xmlns:Converters="clr-namespace:Yuhan.WPF.Converters;assembly=Yuhan.WPF"
     AllowsTransparency="True" Background="Transparent" Title="EssentialWindow"
-    MinWidth="370" MaxWidth="370"
+    MinWidth="370" MaxWidth="370" Topmost="True"
     ResizeMode="NoResize" ShowActivated="True" MinimizeButtonState="None" MaximizeButtonState="None" 
                               SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <CustomWindow:EssentialWindow.Resources>
