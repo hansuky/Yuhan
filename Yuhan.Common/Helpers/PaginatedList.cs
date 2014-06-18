@@ -8,10 +8,23 @@ namespace Yuhan.Common.Helpers
     public class PaginatedList<T> : List<T>, IPager
     where T : class
     {
-        public int PageIndex { get; private set; }
-        public int PageSize { get; private set; }
-        public int TotalCount { get; private set; }
-        public int TotalPages { get { return (int)Math.Ceiling(TotalCount / (double)PageSize); } }
+        public int PageIndex { get; protected set; }
+        public int PageSize { get; protected set; }
+        public int TotalCount { get; protected set; }
+        private int? _TotalPages;
+        public int TotalPages
+        {
+            get
+            {
+                if (_TotalPages.HasValue)
+                    return _TotalPages.Value;
+                return (int)Math.Ceiling(TotalCount / (double)PageSize);
+            }
+            protected set
+            {
+                _TotalPages = value;
+            }
+        }
 
         public PaginatedList(IEnumerable<T> source, int pageIndex = 0, int pageSize = 10)
         {
